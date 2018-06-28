@@ -24,9 +24,9 @@ public class SauvegardeTest : MonoBehaviour {
 		rbpiegon = GetComponent <Rigidbody2D> ();
 		countCollectible = 0;
 
-		totalCollectible = PlayerPrefs.GetInt ("Total", 0);
+		totalCollectible = ZPlayerPrefs.GetInt ("Total", 0);
 
-		highScoreLevelTest = PlayerPrefs.GetInt ("HighScoreLTest", 0);
+		highScoreLevelTest = ZPlayerPrefs.GetInt ("HighScoreLTest", 0);
 	}
 		
 	void FixedUpdate () {
@@ -54,19 +54,19 @@ public class SauvegardeTest : MonoBehaviour {
 		if (other.gameObject.tag == "EndOfLevel") {
 			//totalCollectibleText.text = "Total Collectible : " + totalCollectible;
 			totalCollectible = totalCollectible + countCollectible;
-			PlayerPrefs.SetInt ("Total", totalCollectible);
+			ZPlayerPrefs.SetInt ("Total", totalCollectible);
 
 			if (countCollectible > highScoreLevelTest) {
 				//highScoreLTestText.text = "Highscore : " + highScoreLevelTest;
 				highScoreLevelTest = countCollectible;
-				PlayerPrefs.SetInt ("HighScoreLTest", countCollectible);
+				ZPlayerPrefs.SetInt ("HighScoreLTest", countCollectible);
 			}
 		}
 	}
 
 	public void Reset (){
-		PlayerPrefs.DeleteKey ("Total");
-		PlayerPrefs.DeleteKey ("HighScoreLTest");
+		ZPlayerPrefs.DeleteKey ("Total");
+		ZPlayerPrefs.DeleteKey ("HighScoreLTest");
 	}
 
 	void UserInputs () {

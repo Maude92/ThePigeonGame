@@ -42,7 +42,7 @@ public static class ZPlayerPrefs
 
     public static void DeleteKey(string key)
     {
-        PlayerPrefs.DeleteKey(key);
+		PlayerPrefs.DeleteKey(Encrypt(key, strPassword));
     }
 
     public static float GetFloat(string key)
