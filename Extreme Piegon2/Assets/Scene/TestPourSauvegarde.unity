@@ -443,6 +443,7 @@ MonoBehaviour:
   countdown2: {fileID: 44469934}
   countdown1: {fileID: 1353202325}
   countdownGo: {fileID: 918922915}
+  player: {fileID: 1693702673}
 --- !u!4 &608359999
 Transform:
   m_ObjectHideFlags: 0

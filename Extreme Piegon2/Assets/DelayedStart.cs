@@ -5,15 +5,20 @@ using UnityEngine;
 public class DelayedStart : MonoBehaviour {
 
 	//public GameObject countdown;
-	Animator anim;
+	//Animator anim;
 
 	public GameObject countdown3;
 	public GameObject countdown2;
 	public GameObject countdown1;
 	public GameObject countdownGo;
 
+	SauvegardeTest sauvegardetest;
+	public GameObject player;
+
 	// Use this for initialization
 	void Start () {
+		sauvegardetest = player.GetComponent<SauvegardeTest> ();
+
 		StartCoroutine (StartDelay());
 
 		//anim = countdown.GetComponent<Animator> ();
@@ -36,6 +41,7 @@ public class DelayedStart : MonoBehaviour {
 //		Time.timeScale = 1;
 
 		// Un autre test
+		sauvegardetest.enabled = false;
 		Time.timeScale = 0;
 		countdown3.SetActive (true);
 		yield return new WaitForSecondsRealtime (1f);
@@ -50,6 +56,7 @@ public class DelayedStart : MonoBehaviour {
 		yield return new WaitForSecondsRealtime (0.5f);
 		countdownGo.SetActive (false);
 		Time.timeScale = 1;
+		sauvegardetest.enabled = true;
 	}
 
 }
