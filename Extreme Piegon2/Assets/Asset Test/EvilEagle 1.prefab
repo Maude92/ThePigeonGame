@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1013080212531286}
+  m_IsPrefabParent: 1
+--- !u!1 &1013080212531286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4750733996065994}
+  - component: {fileID: 212791287373787084}
+  - component: {fileID: 68129198537661022}
+  - component: {fileID: 68567574702904328}
+  - component: {fileID: 50081414562649038}
+  m_Layer: 10
+  m_Name: EvilEagle 1
+  m_TagString: Ennemi
+  m_Icon: {fileID: -4087464717476244675, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4750733996065994
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013080212531286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5803657, y: 0.38170546, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50081414562649038
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013080212531286}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
+--- !u!68 &68129198537661022
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013080212531286}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.5527582, y: 2.2068868}
+  - {x: -0.4270029, y: 0.90399086}
+  - {x: 0.1251688, y: 1.2583433}
+  - {x: 0.65933895, y: 1.8628787}
+  - {x: 1.3438072, y: 2.0813527}
+  - {x: 1.317523, y: 1.8336843}
+  - {x: 2.8893433, y: 2.0377288}
+  - {x: 3.7246037, y: 1.6328017}
+  - {x: 3.5327883, y: 0.8894638}
+  - {x: 2.6562796, y: 0.7751049}
+  - {x: 1.9552708, y: 0.08512759}
+  - {x: 1.2567425, y: -0.16948372}
+  - {x: 0.53105354, y: -0.046571434}
+  - {x: 0.9335251, y: -0.40311092}
+  - {x: 2.111743, y: -0.68457335}
+  - {x: 1.9044399, y: -1.4392169}
+  - {x: 0.8230295, y: -1.424752}
+  - {x: 0.4053154, y: -1.2423844}
+  - {x: 0.19456482, y: -1.761182}
+  - {x: -0.8202553, y: -2.127184}
+  - {x: -1.5566225, y: -1.8867761}
+  - {x: -1.6140499, y: -1.3675579}
+  - {x: -0.9694538, y: -1.1621523}
+  - {x: -1.0171471, y: -0.08001393}
+  - {x: -1.7327671, y: -0.3245324}
+  - {x: -2.1028786, y: 0.22014558}
+  - {x: -1.5509624, y: 0.72449076}
+  - {x: -2.9095802, y: 1.313599}
+  - {x: -3.3665743, y: 1.8197895}
+  - {x: -3.5244284, y: 2.1505723}
+  - {x: -3.557819, y: 2.2160683}
+  - {x: -3.5334182, y: 2.1724043}
+--- !u!68 &68567574702904328
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013080212531286}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.1
+  m_Points:
+  - {x: -3.5527582, y: 2.2068868}
+  - {x: -0.4270029, y: 0.90399086}
+  - {x: 0.1251688, y: 1.2583433}
+  - {x: 0.65933895, y: 1.8628787}
+  - {x: 1.3438072, y: 2.0813527}
+  - {x: 1.317523, y: 1.8336843}
+  - {x: 2.8893433, y: 2.0377288}
+  - {x: 3.7246037, y: 1.6328017}
+  - {x: 3.5327883, y: 0.8894638}
+  - {x: 2.6562796, y: 0.7751049}
+  - {x: 1.9552708, y: 0.08512759}
+  - {x: 1.2567425, y: -0.16948372}
+  - {x: 0.53105354, y: -0.046571434}
+  - {x: 0.9335251, y: -0.40311092}
+  - {x: 2.111743, y: -0.68457335}
+  - {x: 1.9044399, y: -1.4392169}
+  - {x: 0.8230295, y: -1.424752}
+  - {x: 0.4053154, y: -1.2423844}
+  - {x: 0.19456482, y: -1.761182}
+  - {x: -0.8202553, y: -2.127184}
+  - {x: -1.5566225, y: -1.8867761}
+  - {x: -1.6140499, y: -1.3675579}
+  - {x: -0.9694538, y: -1.1621523}
+  - {x: -1.0171471, y: -0.08001393}
+  - {x: -1.7327671, y: -0.3245324}
+  - {x: -2.1028786, y: 0.22014558}
+  - {x: -1.5509624, y: 0.72449076}
+  - {x: -2.9095802, y: 1.313599}
+  - {x: -3.3665743, y: 1.8197895}
+  - {x: -3.5244284, y: 2.1505723}
+  - {x: -3.557819, y: 2.2160683}
+  - {x: -3.5334182, y: 2.1724043}
+--- !u!212 &212791287373787084
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013080212531286}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 11e9848079b9e474fa287c81cc02b443, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.14, y: 4.05}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
