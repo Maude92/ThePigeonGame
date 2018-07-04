@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SauvegardeTest : MonoBehaviour {
 
 	Rigidbody2D rbpiegon;
+	Animator anim;
 
 	public float maxSpeed = 5f;
 	public float upForce = 100f;
@@ -18,15 +19,21 @@ public class SauvegardeTest : MonoBehaviour {
 	public Text totalCollectibleText;
 	public Text highScoreLTestText;
 
+	public int nbVie;
+
 
 	// Use this for initialization
 	void Start () {
 		rbpiegon = GetComponent <Rigidbody2D> ();
+		anim = GetComponent<Animator> ();
+
 		countCollectible = 0;
 
 		totalCollectible = ZPlayerPrefs.GetInt ("Total", 0);
 
 		highScoreLevelTest = ZPlayerPrefs.GetInt ("HighScoreLTest", 0);
+
+		nbVie = 3;
 	}
 		
 	void FixedUpdate () {
@@ -43,6 +50,10 @@ public class SauvegardeTest : MonoBehaviour {
 		totalCollectibleText.text = "Total Collectible : " + totalCollectible;
 		highScoreLTestText.text = "Highscore : " + highScoreLevelTest;
 
+		anim.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Horizontal")));
+		anim.SetFloat ("Recule", Input.GetAxis ("Horizontal"));
+
+		print ("Vie : " + nbVie);
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
@@ -62,6 +73,18 @@ public class SauvegardeTest : MonoBehaviour {
 				ZPlayerPrefs.SetInt ("HighScoreLTest", countCollectible);
 			}
 		}
+
+		if (other.gameObject.tag == "Ennemi") {
+			if (nbVie > 1) {
+				anim.SetBool ("Hurt", true);
+				print ("BAM! Ça fait mal...");
+				nbVie--;
+			} else if (nbVie <= 1) {
+				anim.SetBool("Die", true);
+				print ("Pow-pow t'es mort!");
+				nbVie = 0;
+			} 
+		}
 	}
 
 	public void Reset (){
@@ -72,6 +95,7 @@ public class SauvegardeTest : MonoBehaviour {
 	void UserInputs () {
 	// A  button ou Up Arrow
 		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetButtonDown ("360_AButton")) {
+			anim.SetBool ("Fly", true);
 			rbpiegon.velocity = Vector2.zero;
 			rbpiegon.AddForce (new Vector2 (0, upForce));
 		}
