@@ -24,6 +24,13 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject mainUI;
 	public GameObject dieUI;
 
+	public GameObject coeur3;
+	public GameObject coeur3empty;
+	public GameObject coeur2;
+	public GameObject coeur2empty;
+	public GameObject coeur1;
+	public GameObject coeur1empty;
+
 	MoveCameraNEW movecameranewscript;
 	public GameObject laCamera;
 
@@ -61,7 +68,7 @@ public class SauvegardeTest : MonoBehaviour {
 		anim.SetFloat ("Speed", Mathf.Abs (Input.GetAxis ("Horizontal")));
 		anim.SetFloat ("Recule", Input.GetAxis ("Horizontal"));
 
-		print ("Vie : " + nbVie);
+		//print ("Vie : " + nbVie);
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
@@ -83,17 +90,28 @@ public class SauvegardeTest : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Ennemi") {
-			if (nbVie > 1) {
+			if (nbVie == 3) {
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
 				nbVie--;
-			} else if (nbVie <= 1) {
+				coeur3empty.SetActive (true);
+				coeur3.SetActive (false);
+			} else if (nbVie == 2) {
+				anim.SetBool ("Hurt", true);
+				print ("BAM! Ça fait mal...");
+				nbVie--;
+				coeur2empty.SetActive (true);
+				coeur2.SetActive (false);
+			} 
+			else if (nbVie <= 1) {
 				StartCoroutine (YouDied ());
 			} 
 		}
 	}
 
 	IEnumerator YouDied () {
+		coeur1empty.SetActive (true);
+		coeur1.SetActive (false);
 		movecameranewscript.enabled = false;
 		anim.SetBool("Die", true);
 		print ("Pow-pow t'es mort!");
