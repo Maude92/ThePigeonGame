@@ -21,11 +21,19 @@ public class SauvegardeTest : MonoBehaviour {
 
 	public int nbVie;
 
+	public GameObject mainUI;
+	public GameObject dieUI;
+
+	MoveCameraNEW movecameranewscript;
+	public GameObject laCamera;
+
+
 
 	// Use this for initialization
 	void Start () {
 		rbpiegon = GetComponent <Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
+		movecameranewscript = laCamera.GetComponent<MoveCameraNEW> ();
 
 		countCollectible = 0;
 
@@ -80,11 +88,19 @@ public class SauvegardeTest : MonoBehaviour {
 				print ("BAM! Ça fait mal...");
 				nbVie--;
 			} else if (nbVie <= 1) {
-				anim.SetBool("Die", true);
-				print ("Pow-pow t'es mort!");
-				nbVie = 0;
+				StartCoroutine (YouDied ());
 			} 
 		}
+	}
+
+	IEnumerator YouDied () {
+		movecameranewscript.enabled = false;
+		anim.SetBool("Die", true);
+		print ("Pow-pow t'es mort!");
+		nbVie = 0;
+		yield return new WaitForSeconds (1);
+		mainUI.SetActive (false);
+		dieUI.SetActive (true);
 	}
 
 	public void Reset (){
