@@ -9,6 +9,7 @@ public class SpawnEvilBird : MonoBehaviour {
 	public int speedbird = 500;
 	public float timebeforedestroy = 5f;
 
+
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Player") {
 			print ("Evil bird on the way!");
@@ -17,6 +18,7 @@ public class SpawnEvilBird : MonoBehaviour {
 	}
 
 	IEnumerator AttackPlayer(){
+		GetComponent<Collider2D> ().enabled = false;
 		yield return new WaitForSeconds (0.1f);
 		GameObject evilbird;
 		evilbird = (GameObject)Instantiate (evilbirdprefab, spawnpoint.transform.position, Quaternion.identity);
