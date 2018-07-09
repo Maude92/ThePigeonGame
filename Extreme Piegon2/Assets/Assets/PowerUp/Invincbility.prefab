@@ -78,8 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69a54806bbcf464ebc3dbf003730bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerUp_SoDWorld: {fileID: 0}
+  PowerUp_SoDWorld: {fileID: 1600836482965870, guid: 7dffa89671e7c400394becfe46b82fbb,
+    type: 2}
   PowerUp_SoDUI: {fileID: 0}
+  TrigDestruction: {fileID: 0}
+  TimerSoD: 0
   PowerUp_InvincibilityWorld: {fileID: 1646200522742542}
   PowerUp_InvicibilityUI: {fileID: 0}
   BeakyGotAPowerUp: 0

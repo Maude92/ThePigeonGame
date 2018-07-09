@@ -8,6 +8,8 @@ public class PowerUp : MonoBehaviour {
 	//Scream of Death --> = 1
 	public GameObject PowerUp_SoDWorld;
 	public Image PowerUp_SoDUI;
+	public GameObject TrigDestruction;
+	public float TimerSoD;
 
 	//Invincibilité --> = 2
 	public GameObject PowerUp_InvincibilityWorld;
@@ -27,6 +29,8 @@ public class PowerUp : MonoBehaviour {
 
 		spriterendererpowerup = GetComponent<SpriteRenderer> ();
 		collider2dpowerup = GetComponent<Collider2D> ();
+
+		TrigDestruction.SetActive (false);
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
@@ -69,7 +73,21 @@ public class PowerUp : MonoBehaviour {
 	}
 
 	public void ActivatePowerUp(){
-		// écrire du code
-		print ("Allo.");
+		if (WichPowerUp == 1) {
+			PowerUp_SoDUI.enabled = false;
+			TrigDestruction.SetActive (true);
+			TimerSoD = 3;
+			TimerSoD = TimerSoD - 1 * Time.deltaTime;
+			if (TimerSoD <= 0) {
+				TrigDestruction.SetActive (false);
+			}
+
+		}
+
+		if (WichPowerUp == 2) {
+			PowerUp_InvicibilityUI.enabled = false;
+			print ("Un jours il y aura qqchose ici");
+			//dommage = 0 pendant x secondes
+		}
 	}
 }
