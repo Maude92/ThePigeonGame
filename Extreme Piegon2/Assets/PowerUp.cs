@@ -16,11 +16,17 @@ public class PowerUp : MonoBehaviour {
 	public bool BeakyGotAPowerUp;
 	public int WichPowerUp;
 
+	SpriteRenderer spriterendererpowerup;
+	Collider2D collider2dpowerup;
+
 
 	void Start (){
 		PowerUp_SoDUI.enabled = false;
 		PowerUp_InvicibilityUI.enabled = false;
 		BeakyGotAPowerUp = false;
+
+		spriterendererpowerup = GetComponent<SpriteRenderer> ();
+		collider2dpowerup = GetComponent<Collider2D> ();
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
@@ -41,7 +47,9 @@ public class PowerUp : MonoBehaviour {
 		//Scream of Death
 		if (WichPowerUp == 1) {
 			//Désactiver le PowerUp du World et activer le PowerUp dans la box
-			PowerUp_SoDWorld.SetActive (false); //faire disparaitre le powerup dans le monde
+			//PowerUp_SoDWorld.SetActive (false); //faire disparaitre le powerup dans le monde
+			spriterendererpowerup.enabled = false;
+			collider2dpowerup.enabled = false;
 			PowerUp_SoDUI.enabled = true; //mettre powerup dans la box
 
 			//Désactiver les autres dans la box
@@ -51,7 +59,9 @@ public class PowerUp : MonoBehaviour {
 
 		//Invincibility
 		if (WichPowerUp == 2) {
-			PowerUp_InvincibilityWorld.SetActive (false);
+			//PowerUp_InvincibilityWorld.SetActive (false);
+			spriterendererpowerup.enabled = false;
+			collider2dpowerup.enabled = false;
 			PowerUp_InvicibilityUI.enabled = true;
 
 			PowerUp_SoDUI.enabled = false;

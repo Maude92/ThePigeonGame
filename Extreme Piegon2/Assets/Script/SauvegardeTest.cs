@@ -207,24 +207,38 @@ public class SauvegardeTest : MonoBehaviour {
 
 	// LES TRIGGERS
 		//Triggers
-		if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
+		if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptpremier.BeakyGotAPowerUp == true) {
+			powerupscriptpremier.BeakyGotAPowerUp = false;
+			powerupscriptpremier.ActivatePowerUp ();
+			print ("J'utilise le powerup #2!");
 			//print ("Je pèse sur les deux triggers en même temps et j'ai utilisé un powerup!");
 
-			if (powerupscriptpremier.BeakyGotAPowerUp == true) {
-				powerupscriptpremier.BeakyGotAPowerUp = false;
-				powerupscriptpremier.ActivatePowerUp ();
-				print ("J'utilise le premier powerup!");
-			}
-			if (powerupscriptdeuxieme.BeakyGotAPowerUp = true) {
-				powerupscriptdeuxieme.BeakyGotAPowerUp = false;
-				powerupscriptdeuxieme.ActivatePowerUp ();
-				print ("J'utilise le deuxième powerup!");
-			}
+//			if (powerupscriptpremier.BeakyGotAPowerUp == true) {
+//				powerupscriptpremier.BeakyGotAPowerUp = false;
+//				powerupscriptpremier.ActivatePowerUp ();
+//				print ("J'utilise le premier powerup!");
+//			} else if (powerupscriptpremier.BeakyGotAPowerUp == false){
+//				print ("Nope.");
+//			}
+//
+//			if (powerupscriptdeuxieme.BeakyGotAPowerUp = true) {
+//				powerupscriptdeuxieme.BeakyGotAPowerUp = false;
+//				powerupscriptdeuxieme.ActivatePowerUp ();
+//				print ("J'utilise le deuxième powerup!");
+//			} else if (powerupscriptdeuxieme.BeakyGotAPowerUp == false){
+//				print ("Nope.");
+//			}
 
-		} else if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") < 0.001) {
-			print ("Je pèse juste sur le trigger gauche");
-		} else if (Input.GetAxis ("360_TriggerL") < 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
-			print ("Je pèse juste sur le trigger droit");
+//		} else if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") < 0.001) {
+//			print ("Je pèse juste sur le trigger gauche");
+//		} else if (Input.GetAxis ("360_TriggerL") < 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
+//			print ("Je pèse juste sur le trigger droit");
+		}
+
+		if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptdeuxieme.BeakyGotAPowerUp == true) {
+			powerupscriptdeuxieme.BeakyGotAPowerUp = false;
+			powerupscriptdeuxieme.ActivatePowerUp ();
+			print ("J'utilise le powerup #1!");
 		}
 
 		// Triggers séparés
