@@ -10,6 +10,7 @@ public class PowerUp : MonoBehaviour {
 	public Image PowerUp_SoDUI;
 	public GameObject TrigDestruction;
 	public float TimerSoD;
+	public bool killeverybody;
 
 	//Invincibilité --> = 2
 	public GameObject PowerUp_InvincibilityWorld;
@@ -30,7 +31,7 @@ public class PowerUp : MonoBehaviour {
 		spriterendererpowerup = GetComponent<SpriteRenderer> ();
 		collider2dpowerup = GetComponent<Collider2D> ();
 
-		TrigDestruction.SetActive (false);
+		//TrigDestruction.SetActive (false);
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
@@ -75,13 +76,15 @@ public class PowerUp : MonoBehaviour {
 	public void ActivatePowerUp(){
 		if (WichPowerUp == 1) {
 			PowerUp_SoDUI.enabled = false;
-			TrigDestruction.SetActive (true);
-			TimerSoD = 3;
-			TimerSoD = TimerSoD - 1 * Time.deltaTime;
-			if (TimerSoD <= 0) {
-				TrigDestruction.SetActive (false);
-			}
-
+			StartCoroutine (KillEverybodyNow ());
+//			killeverybody = true;
+			//TrigDestruction.SetActive (true);
+//			TimerSoD = 1;
+//			TimerSoD = TimerSoD - 1 * Time.deltaTime;
+//			if (TimerSoD <= 0) {
+//				TrigDestruction.SetActive (false);
+//				killeverybody = false;
+//			}
 		}
 
 		if (WichPowerUp == 2) {
@@ -89,5 +92,13 @@ public class PowerUp : MonoBehaviour {
 			print ("Un jours il y aura qqchose ici");
 			//dommage = 0 pendant x secondes
 		}
+	}
+
+	IEnumerator KillEverybodyNow () {
+		killeverybody = true;
+		yield return new WaitForSeconds (0.2f);
+		killeverybody = false;
+		TrigDestruction.SetActive (false);
+
 	}
 }

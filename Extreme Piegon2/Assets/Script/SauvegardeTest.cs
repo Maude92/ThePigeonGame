@@ -125,13 +125,13 @@ public class SauvegardeTest : MonoBehaviour {
 				coeur2.SetActive (true);
 				coeur2empty.SetActive (false);
 			}
-			if (nbVie == 2) {
+			else if (nbVie == 2) {
 				other.gameObject.SetActive (false);
 				nbVie++;
 				coeur3.SetActive (true);
 				coeur3empty.SetActive (false);
 			}
-			if (nbVie == 3) {
+			else if (nbVie == 3) {
 				other.gameObject.SetActive (false);
 				print ("Too bad. Déjà plein d'énergie.");
 			}
@@ -147,6 +147,8 @@ public class SauvegardeTest : MonoBehaviour {
 		anim.SetBool("Die", true);
 		print ("Pow-pow t'es mort!");
 		nbVie = 0;
+		powerupscriptpremier.BeakyGotAPowerUp = false;
+		powerupscriptdeuxieme.BeakyGotAPowerUp = false;
 		yield return new WaitForSeconds (1);
 		mainUI.SetActive (false);
 		powerupUI.SetActive (false);
