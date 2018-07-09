@@ -4655,6 +4655,32 @@ Prefab:
       propertyPath: powerupUI
       value: 
       objectReference: {fileID: 1796118714}
+    - target: {fileID: 212090558378428820, guid: 6a91c2554a6df8a49ab00ca3d83f8c35,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8be10302a140e408b94e4dae52ad6d01,
+        type: 3}
+    - target: {fileID: 212090558378428820, guid: 6a91c2554a6df8a49ab00ca3d83f8c35,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212090558378428820, guid: 6a91c2554a6df8a49ab00ca3d83f8c35,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 212090558378428820, guid: 6a91c2554a6df8a49ab00ca3d83f8c35,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 15.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 95688182344149314, guid: 6a91c2554a6df8a49ab00ca3d83f8c35,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a91c2554a6df8a49ab00ca3d83f8c35, type: 2}
   m_IsPrefabParent: 0
