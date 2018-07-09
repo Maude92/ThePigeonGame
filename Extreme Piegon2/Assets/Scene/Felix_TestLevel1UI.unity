@@ -1955,7 +1955,7 @@ Prefab:
       objectReference: {fileID: 61087345}
     - target: {fileID: 1764859759766048, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
@@ -4223,7 +4223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1361611824
 Transform:
   m_ObjectHideFlags: 0
@@ -4941,6 +4941,15 @@ MonoBehaviour:
   totalCollectibleText: {fileID: 858276888}
   highScoreLTestText: {fileID: 300739282}
   nbVie: 0
+  mainUI: {fileID: 0}
+  dieUI: {fileID: 0}
+  coeur3: {fileID: 0}
+  coeur3empty: {fileID: 0}
+  coeur2: {fileID: 0}
+  coeur2empty: {fileID: 0}
+  coeur1: {fileID: 0}
+  coeur1empty: {fileID: 0}
+  laCamera: {fileID: 0}
 --- !u!114 &1693702681
 MonoBehaviour:
   m_ObjectHideFlags: 0
