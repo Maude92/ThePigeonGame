@@ -16,6 +16,7 @@ public class PowerUp : MonoBehaviour {
 	public bool BeakyGotAPowerUp;
 	public int WichPowerUp;
 
+
 	void Start (){
 		PowerUp_SoDUI.enabled = false;
 		PowerUp_InvicibilityUI.enabled = false;
@@ -29,7 +30,7 @@ public class PowerUp : MonoBehaviour {
 		}
 	}
 
-	public void PowerUpCheck(){
+	void PowerUpCheck(){
 
 		//Désactiver les PowerUp dans la box lorsque vide
 		if (WichPowerUp == 0) {
@@ -55,5 +56,10 @@ public class PowerUp : MonoBehaviour {
 
 			PowerUp_SoDUI.enabled = false;
 		}
+	}
+
+	public void ActivatePowerUp(){
+		// écrire du code
+		print ("Allo.");
 	}
 }
