@@ -12,6 +12,7 @@ TagManager:
   - Collectible
   - EndOfLevel
   - PowerUp
+  - OnScreen
   layers:
   - Default
   - TransparentFX

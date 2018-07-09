@@ -23,6 +23,7 @@ public class SauvegardeTest : MonoBehaviour {
 
 	public GameObject mainUI;
 	public GameObject dieUI;
+	public GameObject powerupUI;
 
 	public GameObject coeur3;
 	public GameObject coeur3empty;
@@ -34,6 +35,12 @@ public class SauvegardeTest : MonoBehaviour {
 	MoveCameraNEW movecameranewscript;
 	public GameObject laCamera;
 
+	PowerUp powerupscriptpremier;
+	PowerUp powerupscriptdeuxieme;
+	public GameObject powerup1;
+	public GameObject powerup2;
+
+
 
 
 	// Use this for initialization
@@ -41,6 +48,8 @@ public class SauvegardeTest : MonoBehaviour {
 		rbpiegon = GetComponent <Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		movecameranewscript = laCamera.GetComponent<MoveCameraNEW> ();
+		powerupscriptpremier = powerup1.GetComponent<PowerUp> ();
+		powerupscriptdeuxieme = powerup2.GetComponent<PowerUp> ();
 
 		countCollectible = 0;
 
@@ -140,6 +149,7 @@ public class SauvegardeTest : MonoBehaviour {
 		nbVie = 0;
 		yield return new WaitForSeconds (1);
 		mainUI.SetActive (false);
+		powerupUI.SetActive (false);
 		dieUI.SetActive (true);
 	}
 
@@ -197,12 +207,38 @@ public class SauvegardeTest : MonoBehaviour {
 
 	// LES TRIGGERS
 		//Triggers
-		if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
-			print ("Je pèse sur les deux triggers en même temps!");
-		} else if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") < 0.001) {
-			print ("Je pèse juste sur le trigger gauche");
-		} else if (Input.GetAxis ("360_TriggerL") < 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
-			print ("Je pèse juste sur le trigger droit");
+		if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptpremier.BeakyGotAPowerUp == true) {
+			powerupscriptpremier.BeakyGotAPowerUp = false;
+			powerupscriptpremier.ActivatePowerUp ();
+			print ("J'utilise le powerup #2!");
+			//print ("Je pèse sur les deux triggers en même temps et j'ai utilisé un powerup!");
+
+//			if (powerupscriptpremier.BeakyGotAPowerUp == true) {
+//				powerupscriptpremier.BeakyGotAPowerUp = false;
+//				powerupscriptpremier.ActivatePowerUp ();
+//				print ("J'utilise le premier powerup!");
+//			} else if (powerupscriptpremier.BeakyGotAPowerUp == false){
+//				print ("Nope.");
+//			}
+//
+//			if (powerupscriptdeuxieme.BeakyGotAPowerUp = true) {
+//				powerupscriptdeuxieme.BeakyGotAPowerUp = false;
+//				powerupscriptdeuxieme.ActivatePowerUp ();
+//				print ("J'utilise le deuxième powerup!");
+//			} else if (powerupscriptdeuxieme.BeakyGotAPowerUp == false){
+//				print ("Nope.");
+//			}
+
+//		} else if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") < 0.001) {
+//			print ("Je pèse juste sur le trigger gauche");
+//		} else if (Input.GetAxis ("360_TriggerL") < 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
+//			print ("Je pèse juste sur le trigger droit");
+		}
+
+		if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptdeuxieme.BeakyGotAPowerUp == true) {
+			powerupscriptdeuxieme.BeakyGotAPowerUp = false;
+			powerupscriptdeuxieme.ActivatePowerUp ();
+			print ("J'utilise le powerup #1!");
 		}
 
 		// Triggers séparés
