@@ -107,6 +107,28 @@ public class SauvegardeTest : MonoBehaviour {
 				StartCoroutine (YouDied ());
 			} 
 		}
+
+		if (other.gameObject.tag == "Health") {
+			print ("+ 1 de vie! Yay!");
+			if (nbVie == 1) {
+				other.gameObject.SetActive (false);
+				nbVie++;
+				coeur2.SetActive (true);
+				coeur2empty.SetActive (false);
+			}
+			if (nbVie == 2) {
+				other.gameObject.SetActive (false);
+				nbVie++;
+				coeur3.SetActive (true);
+				coeur3empty.SetActive (false);
+			}
+			if (nbVie == 3) {
+				other.gameObject.SetActive (false);
+				print ("Too bad. Déjà plein d'énergie.");
+			}
+
+		}
+
 	}
 
 	IEnumerator YouDied () {
