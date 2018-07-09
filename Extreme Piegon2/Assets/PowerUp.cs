@@ -15,6 +15,18 @@ public class PowerUp : MonoBehaviour {
 	//Invincibilité --> = 2
 	public GameObject PowerUp_InvincibilityWorld;
 	public Image PowerUp_InvicibilityUI;
+	public GameObject player;
+	public GameObject laCamera;
+	public GameObject goFaster;
+//	public float speedupthatpigeon;
+//	public float speedupthatcamera;
+//	public float speedupthatgofaster;
+	SauvegardeTest scriptplayer;
+	MoveCameraNEW movecameranewscript;
+	GoFaster gofasterscript;
+	//public GameObject colliderenfant;
+	//Collider2D colliderPlayer;
+	//Collider2D colliderPlayerForPowerup;
 
 	public bool BeakyGotAPowerUp;
 	public int WichPowerUp;
@@ -30,6 +42,10 @@ public class PowerUp : MonoBehaviour {
 
 		spriterendererpowerup = GetComponent<SpriteRenderer> ();
 		collider2dpowerup = GetComponent<Collider2D> ();
+
+		scriptplayer = player.GetComponent<SauvegardeTest> ();
+		movecameranewscript = laCamera.GetComponent<MoveCameraNEW> ();
+		gofasterscript = goFaster.GetComponent<GoFaster> ();
 
 		//TrigDestruction.SetActive (false);
 	}
@@ -89,7 +105,8 @@ public class PowerUp : MonoBehaviour {
 
 		if (WichPowerUp == 2) {
 			PowerUp_InvicibilityUI.enabled = false;
-			print ("Un jours il y aura qqchose ici");
+			StartCoroutine (ImInvincible ());
+			//print ("Un jours il y aura qqchose ici");
 			//dommage = 0 pendant x secondes
 		}
 	}
@@ -99,6 +116,19 @@ public class PowerUp : MonoBehaviour {
 		yield return new WaitForSeconds (0.2f);
 		killeverybody = false;
 		TrigDestruction.SetActive (false);
+	}
 
+	IEnumerator ImInvincible () {
+		print ("Un jour le powerup commencera maintenant.");
+		gofasterscript.newSpeed = 9;
+		movecameranewscript.speed = 6;
+		scriptplayer.maxSpeed = 10;
+		player.layer = LayerMask.NameToLayer ("Fuckall");
+		yield return new WaitForSeconds (5f);
+		gofasterscript.newSpeed = 4.5f;
+		movecameranewscript.speed = 3;
+		scriptplayer.maxSpeed = 5;
+		player.layer = LayerMask.NameToLayer ("Player");
+		print ("Un jour le powerup sera fini maintenant.");
 	}
 }

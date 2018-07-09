@@ -13,6 +13,7 @@ TagManager:
   - EndOfLevel
   - PowerUp
   - OnScreen
+  - Fuckall
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Background
   - Health
   - Miracle
-  - 
+  - Fuckall
   - 
   - 
   - 

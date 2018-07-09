@@ -924,15 +924,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4642154250329750, guid: 17e5679cf2b184b588ec276ccfb0ce61, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.24097559
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4642154250329750, guid: 17e5679cf2b184b588ec276ccfb0ce61, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.24097559
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4642154250329750, guid: 17e5679cf2b184b588ec276ccfb0ce61, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.24097559
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114276946798370436, guid: 17e5679cf2b184b588ec276ccfb0ce61,
         type: 2}
@@ -963,6 +963,26 @@ Prefab:
       propertyPath: TrigDestruction
       value: 
       objectReference: {fileID: 158981664}
+    - target: {fileID: 114276946798370436, guid: 17e5679cf2b184b588ec276ccfb0ce61,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1693702673}
+    - target: {fileID: 114276946798370436, guid: 17e5679cf2b184b588ec276ccfb0ce61,
+        type: 2}
+      propertyPath: colliderenfant
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276946798370436, guid: 17e5679cf2b184b588ec276ccfb0ce61,
+        type: 2}
+      propertyPath: laCamera
+      value: 
+      objectReference: {fileID: 61087342}
+    - target: {fileID: 114276946798370436, guid: 17e5679cf2b184b588ec276ccfb0ce61,
+        type: 2}
+      propertyPath: goFaster
+      value: 
+      objectReference: {fileID: 365103905}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17e5679cf2b184b588ec276ccfb0ce61, type: 2}
   m_IsPrefabParent: 0
@@ -5553,6 +5573,26 @@ Prefab:
       propertyPath: TrigDestruction
       value: 
       objectReference: {fileID: 158981664}
+    - target: {fileID: 114945767012516900, guid: 7dffa89671e7c400394becfe46b82fbb,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1693702673}
+    - target: {fileID: 114945767012516900, guid: 7dffa89671e7c400394becfe46b82fbb,
+        type: 2}
+      propertyPath: colliderenfant
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114945767012516900, guid: 7dffa89671e7c400394becfe46b82fbb,
+        type: 2}
+      propertyPath: laCamera
+      value: 
+      objectReference: {fileID: 61087342}
+    - target: {fileID: 114945767012516900, guid: 7dffa89671e7c400394becfe46b82fbb,
+        type: 2}
+      propertyPath: goFaster
+      value: 
+      objectReference: {fileID: 365103905}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dffa89671e7c400394becfe46b82fbb, type: 2}
   m_IsPrefabParent: 0

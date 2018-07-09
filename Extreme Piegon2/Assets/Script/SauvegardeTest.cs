@@ -98,7 +98,7 @@ public class SauvegardeTest : MonoBehaviour {
 			}
 		}
 
-		if (other.gameObject.tag == "Ennemi") {
+		if (other.gameObject.tag == "Ennemi" && gameObject.layer == LayerMask.NameToLayer ("Player")) {
 			if (nbVie == 3) {
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
