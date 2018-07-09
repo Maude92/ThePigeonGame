@@ -4655,6 +4655,12 @@ Prefab:
       propertyPath: powerupUI
       value: 
       objectReference: {fileID: 1796118714}
+    - target: {fileID: 212090558378428820, guid: 6a91c2554a6df8a49ab00ca3d83f8c35,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b6c267b3c96315438da62053595e871,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a91c2554a6df8a49ab00ca3d83f8c35, type: 2}
   m_IsPrefabParent: 0
