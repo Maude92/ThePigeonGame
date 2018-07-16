@@ -18,12 +18,15 @@ public class SauvegardeTest : MonoBehaviour {
 	public Text countCollectibleText;
 	public Text totalCollectibleText;
 	public Text highScoreLTestText;
+	public Text countCollectibleTextEndOfLevel;
+	public Text highScoreLTestTextEndOfLevel;
 
 	public int nbVie;
 
 	public GameObject mainUI;
 	public GameObject dieUI;
 	public GameObject powerupUI;
+	public GameObject nextlevelUI;
 
 	public GameObject coeur3;
 	public GameObject coeur3empty;
@@ -40,7 +43,7 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject powerup1;
 	public GameObject powerup2;
 
-
+	SpriteRenderer spriterendererplayer;
 
 
 	// Use this for initialization
@@ -50,6 +53,7 @@ public class SauvegardeTest : MonoBehaviour {
 		movecameranewscript = laCamera.GetComponent<MoveCameraNEW> ();
 		powerupscriptpremier = powerup1.GetComponent<PowerUp> ();
 		powerupscriptdeuxieme = powerup2.GetComponent<PowerUp> ();
+		spriterendererplayer = GetComponent<SpriteRenderer> ();
 
 		countCollectible = 0;
 
@@ -88,6 +92,14 @@ public class SauvegardeTest : MonoBehaviour {
 
 		if (other.gameObject.tag == "EndOfLevel") {
 			//totalCollectibleText.text = "Total Collectible : " + totalCollectible;
+			movecameranewscript.speed = 0;
+			maxSpeed = 0;
+			spriterendererplayer.enabled = false;
+			countCollectibleTextEndOfLevel.text = ("Your score : " + countCollectible);
+			highScoreLTestTextEndOfLevel.text = ("High score : " + highScoreLevelTest);
+			mainUI.SetActive (false);
+			powerupUI.SetActive (false);
+			nextlevelUI.SetActive (true);
 			totalCollectible = totalCollectible + countCollectible;
 			ZPlayerPrefs.SetInt ("Total", totalCollectible);
 
