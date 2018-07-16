@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scene/World War Piegeon Scenes/MenuPrincipal.unity
     guid: 91e74344bc0ee4f408e59185e2aa37b3
   - enabled: 1
+    path: Assets/Scene/TestLevel1.unity
+    guid: a59e4c2ec7dc16140b9bcd5de953a9fd
+  - enabled: 0
     path: Assets/Scene/World War Piegeon Scenes/TestPiegon.unity
     guid: 46fe89416ce674106b07bd2674937bbe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/World War Piegeon Scenes/MenuFin.unity
     guid: a934fedde158d4fc9bd3d158eaab58b4
