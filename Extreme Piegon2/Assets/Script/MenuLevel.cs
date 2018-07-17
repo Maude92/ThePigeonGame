@@ -6,12 +6,13 @@ using System.Collections;
 public class MenuLevel : MonoBehaviour {
 
 	public GameObject loadingScreen;
+
 	public Slider slider;
 	public Text progressText;
 	public Text[] randomFact;
 	public Text randomFactText;
 
-
+		
 	public void TryAgain (){
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
