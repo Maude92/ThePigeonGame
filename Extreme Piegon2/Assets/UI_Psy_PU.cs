@@ -85,6 +85,7 @@ public class UI_Psy_PU : MonoBehaviour {
 		}
 
 		if (InterfacePsyIsHere == false) {
+			//animBouton.SetBool ("Disparition", false);
 			TexteDuPsy.text = "";
 		}
 	}
