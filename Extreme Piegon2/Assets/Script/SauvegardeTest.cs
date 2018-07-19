@@ -14,16 +14,26 @@ public class SauvegardeTest : MonoBehaviour {
 	public int countCollectible;
 	public int totalCollectible;
 	public int highScoreLevelTest;
+	public int quelLevel;
+	//public int totaletoilew1l1;
+	public int highScoreEtoileW1L1;
 
 	public Text countCollectibleText;
 	public Text totalCollectibleText;
 	public Text highScoreLTestText;
+	public Text countCollectibleTextEndOfLevel;
+	public Text highScoreLTestTextEndOfLevel;
 
 	public int nbVie;
+	public int nbEtoile;
+	public GameObject troisetoiles;
+	public GameObject deuxetoiles;
+	public GameObject uneetoile;
 
 	public GameObject mainUI;
 	public GameObject dieUI;
 	public GameObject powerupUI;
+	public GameObject nextlevelUI;
 
 	public GameObject coeur3;
 	public GameObject coeur3empty;
@@ -40,7 +50,7 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject powerup1;
 	public GameObject powerup2;
 
-
+	SpriteRenderer spriterendererplayer;
 
 
 	// Use this for initialization
@@ -50,12 +60,17 @@ public class SauvegardeTest : MonoBehaviour {
 		movecameranewscript = laCamera.GetComponent<MoveCameraNEW> ();
 		powerupscriptpremier = powerup1.GetComponent<PowerUp> ();
 		powerupscriptdeuxieme = powerup2.GetComponent<PowerUp> ();
+		spriterendererplayer = GetComponent<SpriteRenderer> ();
 
 		countCollectible = 0;
 
 		totalCollectible = ZPlayerPrefs.GetInt ("Total", 0);
 
 		highScoreLevelTest = ZPlayerPrefs.GetInt ("HighScoreLTest", 0);
+
+		//totaletoilew1l1 = ZPlayerPrefs.GetInt ("EtoileW1L1", 0);
+
+		highScoreEtoileW1L1 = ZPlayerPrefs.GetInt ("HSEtoileW1L1", 0);
 
 		nbVie = 3;
 	}
@@ -81,23 +96,78 @@ public class SauvegardeTest : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
+		
+		// LES COLLECTIBLES
 		if (other.gameObject.tag == "Collectible") {
 			countCollectible++;
 			other.gameObject.SetActive (false);
 		}
 
+
+		// FIN DU LEVEL
 		if (other.gameObject.tag == "EndOfLevel") {
 			//totalCollectibleText.text = "Total Collectible : " + totalCollectible;
-			totalCollectible = totalCollectible + countCollectible;
-			ZPlayerPrefs.SetInt ("Total", totalCollectible);
 
 			if (countCollectible > highScoreLevelTest) {
 				//highScoreLTestText.text = "Highscore : " + highScoreLevelTest;
 				highScoreLevelTest = countCollectible;
 				ZPlayerPrefs.SetInt ("HighScoreLTest", countCollectible);
 			}
+
+			movecameranewscript.speed = 0;
+			maxSpeed = 0;
+			spriterendererplayer.enabled = false;
+			countCollectibleTextEndOfLevel.text = ("Your score : " + countCollectible);
+			highScoreLTestTextEndOfLevel.text = ("High score : " + highScoreLevelTest);
+			mainUI.SetActive (false);
+			powerupUI.SetActive (false);
+			nextlevelUI.SetActive (true);
+			totalCollectible = totalCollectible + countCollectible;
+			ZPlayerPrefs.SetInt ("Total", totalCollectible);
+
+
+				// POUR LES ÉTOILES
+
+				// COMBIEN D'ÉTOILES?												// ON CHANGERA LES CONDITIONS PLUS TARD QUAND ON SAURA C'EST QUOI QUE ÇA PREND POUR LES ÉTOILES
+			if (countCollectible < 75) {
+				nbEtoile = 1;
+			} else if (countCollectible >= 75 && countCollectible <= 99) {
+				nbEtoile = 2;
+			} else if (countCollectible == 100) {
+				nbEtoile = 3;
+			}
+
+				// AFFICHE LES ÉTOILES
+			if (quelLevel == 1) {
+				
+				if (nbEtoile > highScoreEtoileW1L1) {
+					highScoreEtoileW1L1 = nbEtoile;
+					ZPlayerPrefs.SetInt ("HSEtoileW1L1", nbEtoile);
+				} else if (nbEtoile <= highScoreEtoileW1L1) {
+					highScoreEtoileW1L1 = highScoreEtoileW1L1;
+					ZPlayerPrefs.SetInt ("HSEtoileW1L1", highScoreEtoileW1L1);
+				}
+
+				if (nbEtoile == 1) {
+					uneetoile.SetActive (true);
+					deuxetoiles.SetActive (false);
+					troisetoiles.SetActive (false);
+				} else if (nbEtoile == 2) {
+					uneetoile.SetActive (false);
+					deuxetoiles.SetActive (true);
+					troisetoiles.SetActive (false);
+				} else if (nbEtoile == 3) {
+					uneetoile.SetActive (false);
+					deuxetoiles.SetActive (false);
+					troisetoiles.SetActive (true);
+				}
+			} else if (quelLevel == 2) {
+				print ("Il se passe quelque chose d'autre");						// À REMPLIR UN JOUR QUAND ON AURA PLUS QUE 1 LEVEL
+			}
 		}
 
+
+		// LES ENNEMIS
 		if (other.gameObject.tag == "Ennemi" && gameObject.layer == LayerMask.NameToLayer ("Player")) {
 			if (nbVie == 3) {
 				anim.SetBool ("Hurt", true);
@@ -117,6 +187,8 @@ public class SauvegardeTest : MonoBehaviour {
 			} 
 		}
 
+
+		// BONUS DE HEALTH
 		if (other.gameObject.tag == "Health") {
 			print ("+ 1 de vie! Yay!");
 			if (nbVie == 1) {
