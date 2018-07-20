@@ -112,10 +112,12 @@ public class PowerUp : MonoBehaviour {
 	}
 
 	IEnumerator KillEverybodyNow () {
+		player.layer = LayerMask.NameToLayer ("Fuckall");
 		killeverybody = true;
 		yield return new WaitForSeconds (0.2f);
 		killeverybody = false;
 		TrigDestruction.SetActive (false);
+		player.layer = LayerMask.NameToLayer ("Player");
 	}
 
 	IEnumerator ImInvincible () {
