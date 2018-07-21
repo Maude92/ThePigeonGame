@@ -31,7 +31,7 @@ public static class ZPlayerPrefs
     const int Iterations = 555;
 
     // You should Change following password and IV value using Initialize
-    static string strPassword = "IamZETOwow!123";
+	static string strPassword = "IamZETOwow!123";
     static string strSalt = "IvmD123A12";
     static bool hasSetPassword = false;
 
@@ -158,7 +158,10 @@ public static class ZPlayerPrefs
     /////////////////////////////////////////////////////////////////
     public static void Initialize(string newPassword, string newSalt)
     {
-        strPassword = newPassword;
+		//newPassword = "e_9^XbcXtctnQ6Jb*V-?+?Zfk?ftwnsWq?1_m5D8_6B7";																// AJOUT
+		//newSalt = "jY_@nk7=FtHu727MKi4sAtNgr!jV677m=kad!WLhYtcd";																	// AJOUT
+
+        strPassword = newPassword;	
         strSalt = newSalt;
 
         hasSetPassword = true;

@@ -10,6 +10,7 @@ public class SauvegardeTest : MonoBehaviour {
 
 	public float maxSpeed = 5f;
 	public float upForce = 100f;
+	public float sphereRadius = 2f;
 
 	public int countCollectible;
 	public int totalCollectible;
@@ -44,6 +45,7 @@ public class SauvegardeTest : MonoBehaviour {
 
 	MoveCameraNEW movecameranewscript;
 	public GameObject laCamera;
+	public GameObject spawnBeaky;
 
 	PowerUp powerupscriptpremier;
 	PowerUp powerupscriptdeuxieme;
@@ -170,12 +172,14 @@ public class SauvegardeTest : MonoBehaviour {
 		// LES ENNEMIS
 		if (other.gameObject.tag == "Ennemi" && gameObject.layer == LayerMask.NameToLayer ("Player")) {
 			if (nbVie == 3) {
+				StartCoroutine (YoureHurt());
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
 				nbVie--;
 				coeur3empty.SetActive (true);
 				coeur3.SetActive (false);
 			} else if (nbVie == 2) {
+				StartCoroutine (YoureHurt());
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
 				nbVie--;
@@ -212,6 +216,40 @@ public class SauvegardeTest : MonoBehaviour {
 
 	}
 
+
+	void OnTriggerExit2D (Collider2D other){
+		if (other.gameObject.tag == "OnScreen") {
+			// POUR CHANGER LA POSITION
+//			gameObject.transform.position = new Vector3 (spawnBeaky.transform.position.x, gameObject.transform.position.y, 10);
+//			if (Physics.CheckSphere (transform.position, sphereRadius)){
+//				gameObject.transform.position = new Vector3 (spawnBeaky.transform.position.x, 3, 10);
+//			}
+
+			if (nbVie == 1) {
+				StartCoroutine (YouDied ());
+			} else if (nbVie == 2) {
+				StartCoroutine (DeathByScreen ());
+				// VIEILLE VERSION
+//				StartCoroutine (YoureHurt());
+//				anim.SetBool ("Hurt", true);
+//				print ("BAM! Ça fait mal...");
+//				nbVie--;
+//				coeur2empty.SetActive (true);
+//				coeur2.SetActive (false);
+			} else if (nbVie == 3) {
+				StartCoroutine (DeathByScreen ());
+				// VIEILLE VERSION
+//				StartCoroutine (YoureHurt());
+//				anim.SetBool ("Hurt", true);
+//				print ("BAM! Ça fait mal...");
+//				nbVie--;
+//				coeur3empty.SetActive (true);
+//				coeur3.SetActive (false);
+			}
+		}
+	}
+
+
 	IEnumerator YouDied () {
 		coeur1empty.SetActive (true);
 		coeur1.SetActive (false);
@@ -225,6 +263,52 @@ public class SauvegardeTest : MonoBehaviour {
 		mainUI.SetActive (false);
 		powerupUI.SetActive (false);
 		dieUI.SetActive (true);
+	}
+
+	IEnumerator DeathByScreen(){											// LE PLAYER MEURT QUAND IL SORT DE L'ÉCRAN
+		if (nbVie == 2) {
+			coeur2empty.SetActive (true);
+			coeur2.SetActive (false);
+			yield return new WaitForSeconds (0.5f);
+			coeur1empty.SetActive (true);
+			coeur1.SetActive (false);
+			movecameranewscript.enabled = false;
+			anim.SetBool("Die", true);
+			print ("Pow-pow t'es mort!");
+			nbVie = 0;
+			powerupscriptpremier.BeakyGotAPowerUp = false;
+			powerupscriptdeuxieme.BeakyGotAPowerUp = false;
+			yield return new WaitForSeconds (1);
+			mainUI.SetActive (false);
+			powerupUI.SetActive (false);
+			dieUI.SetActive (true);
+		} else if (nbVie == 3) {
+			coeur3empty.SetActive (true);
+			coeur3.SetActive (false);
+			yield return new WaitForSeconds (0.5f);
+			coeur2empty.SetActive (true);
+			coeur2.SetActive (false);
+			yield return new WaitForSeconds (0.5f);
+			coeur1empty.SetActive (true);
+			coeur1.SetActive (false);
+			movecameranewscript.enabled = false;
+			anim.SetBool("Die", true);
+			print ("Pow-pow t'es mort!");
+			nbVie = 0;
+			powerupscriptpremier.BeakyGotAPowerUp = false;
+			powerupscriptdeuxieme.BeakyGotAPowerUp = false;
+			yield return new WaitForSeconds (1);
+			mainUI.SetActive (false);
+			powerupUI.SetActive (false);
+			dieUI.SetActive (true);
+		}
+	}
+
+
+	IEnumerator YoureHurt(){
+		gameObject.layer = LayerMask.NameToLayer ("Fuckall");
+		yield return new WaitForSeconds (0.17f);
+		gameObject.layer = LayerMask.NameToLayer ("Player");
 	}
 
 	public void Reset (){
