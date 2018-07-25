@@ -5,17 +5,15 @@ using UnityEngine.UI;
 
 public class UI_Psy : MonoBehaviour {
 
-	//Temps avant disparition
-	public float Timer;
+	public GameObject CeTrigger;
+	Collider2D Moi;
+
 	public bool InterfacePsyIsHere = false; //Pour savoir si le UI du psy est présent ou non
 
-	//public GameObject Psy_UI; //la bulle de texte (AVANT)
-	public GameObject BullePsy; //la bulle de texte (dans le canevas)
-	Animator animBulle;
-	public Image BullePsygeon;
+	//public GameObject Psy_UI;
 
 	public GameObject PsyCanvas;
-	Animator animBouton;
+	Animator animPsy;
 
 	//Texte et bouton à apparaitre
 	public Text TexteDuPsy;
@@ -26,58 +24,38 @@ public class UI_Psy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		animBulle = BullePsy.GetComponent<Animator> ();
-		animBouton = PsyCanvas.GetComponent<Animator> ();
+		animPsy = PsyCanvas.GetComponent<Animator> ();
 		BoutonB.enabled = false;
 		BoutonX.enabled = false;
-		BullePsygeon.enabled = false;
+		TexteDuPsy.text = "";
+		Moi = CeTrigger.GetComponent<Collider2D> ();
+
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Player") {
 			print ("UI du psy montre toi !");
-			BullePsygeon.enabled = true;
-			animBulle.SetBool ("Apparition", true);
-			//animBulle.SetBool ("Disparition", false);
-			InterfacePsyIsHere = true;
-
+			BoutonB.enabled = false;
+			BoutonX.enabled = false;
+			StartCoroutine (TimerPsy ());
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		CheckTimerForPsy ();
-	}
 
-	public void CheckTimerForPsy () {
-		if (InterfacePsyIsHere == true) {
-			Timer = Timer- 1 * Time.deltaTime;
-		}
-
-		if (Timer <= 28.5) {
-			TexteDuPsy.text = QuestionPsy;
-		}
-
-		if (Timer <= 23 && Timer > 0) {
-			TexteDuPsy.text = "";
-			TexteDuPsy.text = ReponsePigeon;
-			BoutonB.enabled = true;
-			BoutonX.enabled = true;
-		}
-
-		if (Timer <= 0) {
-			//animBulle.SetBool ("Disparition", true);
-			//animBulle.SetBool ("Dead", true);
-			//animBulle.SetBool ("Apparition", false);
-			animBouton.SetBool ("Disparition",true);
-//			BoutonB.enabled = false;
-//			BoutonX.enabled = false;
-			InterfacePsyIsHere = false;
-		}
-
-		if (InterfacePsyIsHere == false) {
-			//animBouton.SetBool ("Disparition", false);
-			TexteDuPsy.text = "";
-		}
+	IEnumerator TimerPsy(){
+		Moi.enabled = false;
+		InterfacePsyIsHere = true;
+		TexteDuPsy.text = QuestionPsy;
+		animPsy.SetBool ("Bouton", true);
+		animPsy.SetBool ("Apparition", true);
+		yield return new WaitForSeconds (4f);
+		TexteDuPsy.text = "";
+		TexteDuPsy.text = ReponsePigeon;
+		BoutonB.enabled = true;
+		BoutonX.enabled = true;
+		yield return new WaitForSeconds (5f);
+		animPsy.SetBool ("Disparition",true);
+		InterfacePsyIsHere = false;
+		yield return new WaitForSeconds (5f);
+		TexteDuPsy.text = "";
 	}
 }
