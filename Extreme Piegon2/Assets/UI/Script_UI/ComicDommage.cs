@@ -8,13 +8,12 @@ public class ComicDommage : MonoBehaviour {
 	int NumberOfImages;
 
 	//Changer le != "Player" par un Tag Décor pour les éléments du décor"
-	void OnCollisionEnter2D (Collision2D col){
-		if (col.gameObject.tag != "Player") {
-			NumberOfImages = Random.Range (1, 8);
-			DammageCheck ();
-		}
-			
-	}
+//	void OnCollisionEnter2D (Collision2D col){					// À REMETTRE SI LES ÉLÉMENTS DU DÉCOR FONT APPARAÎTRE CA AUSSI
+//		if (col.gameObject.tag != "Player") {
+//			NumberOfImages = Random.Range (1, 8);
+//			DammageCheck ();
+//		}
+//	}
 
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Ennemi") {
