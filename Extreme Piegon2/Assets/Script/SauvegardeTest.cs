@@ -83,6 +83,8 @@ public class SauvegardeTest : MonoBehaviour {
 		animPlume2 = plume2.GetComponent<Animator> ();
 		animPlume1 = plume1.GetComponent<Animator> ();
 
+		animPlume3.SetBool ("Move", true);
+
 		lemenupause.enabled = true;
 
 		countCollectible = 0;
@@ -197,6 +199,8 @@ public class SauvegardeTest : MonoBehaviour {
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
 				nbVie--;
+				animPlume3.SetBool ("Lose", true);
+				animPlume2.SetBool ("Move", true);
 				//coeur3empty.SetActive (true);
 				//coeur3.SetActive (false);
 			} else if (nbVie == 2) {
@@ -204,6 +208,8 @@ public class SauvegardeTest : MonoBehaviour {
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
 				nbVie--;
+				animPlume2.SetBool ("Lose", true);
+				animPlume1.SetBool ("Move", true);
 				//coeur2empty.SetActive (true);
 				//coeur2.SetActive (false);
 			} 
@@ -219,12 +225,20 @@ public class SauvegardeTest : MonoBehaviour {
 			if (nbVie == 1) {
 				other.gameObject.SetActive (false);
 				nbVie++;
+				// Plume 1 arrête de bouger et plume 2 recommence à bouger
+				animPlume1.SetBool ("Move", false);
+				animPlume2.SetBool ("Bonus", true);
+				animPlume2.SetBool ("Move", true);
 				//coeur2.SetActive (true);
 				//coeur2empty.SetActive (false);
 			}
 			else if (nbVie == 2) {
 				other.gameObject.SetActive (false);
 				nbVie++;
+				// Plume 2 arrête de bouger et plume 3 recommence à bouger
+				animPlume2.SetBool ("Move", false);
+				animPlume3.SetBool ("Bonus", true);
+				animPlume3.SetBool ("Move", true);
 				//coeur3.SetActive (true);
 				//coeur3empty.SetActive (false);
 			}
@@ -276,9 +290,11 @@ public class SauvegardeTest : MonoBehaviour {
 
 	IEnumerator YouDied () {
 		lemenupause.enabled = false;
+		animPlume1.SetBool ("Lose", true);
 		//coeur1empty.SetActive (true);
 		//coeur1.SetActive (false);
 		movecameranewscript.enabled = false;
+		//movecameranewscript.speed = 0;						// TEST
 		anim.SetBool("Die", true);
 		print ("Pow-pow t'es mort!");
 		nbVie = 0;
@@ -292,12 +308,16 @@ public class SauvegardeTest : MonoBehaviour {
 
 	IEnumerator DeathByScreen(){											// LE PLAYER MEURT QUAND IL SORT DE L'ÉCRAN
 		if (nbVie == 2) {
+			animPlume2.SetBool ("Lose", true);
+			animPlume1.SetBool ("Move", true);
 			//coeur2empty.SetActive (true);
 			//coeur2.SetActive (false);
 			yield return new WaitForSeconds (0.5f);
+			animPlume1.SetBool ("Lose", true);
 			//coeur1empty.SetActive (true);
 			//coeur1.SetActive (false);
 			movecameranewscript.enabled = false;
+			//movecameranewscript.speed = 0;					// TEST
 			anim.SetBool("Die", true);
 			print ("Pow-pow t'es mort!");
 			nbVie = 0;
@@ -308,12 +328,17 @@ public class SauvegardeTest : MonoBehaviour {
 			powerupUI.SetActive (false);
 			dieUI.SetActive (true);
 		} else if (nbVie == 3) {
+			animPlume3.SetBool ("Lose", true);
+			animPlume2.SetBool ("Move", true);
 			//coeur3empty.SetActive (true);
 			//coeur3.SetActive (false);
 			yield return new WaitForSeconds (0.5f);
+			animPlume2.SetBool ("Lose", true);
+			animPlume1.SetBool ("Move", true);
 			//coeur2empty.SetActive (true);
 			//coeur2.SetActive (false);
 			yield return new WaitForSeconds (0.5f);
+			animPlume1.SetBool ("Lose", true);
 			//coeur1empty.SetActive (true);
 			//coeur1.SetActive (false);
 			movecameranewscript.enabled = false;
