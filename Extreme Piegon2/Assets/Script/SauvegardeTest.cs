@@ -37,12 +37,20 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject nextlevelUI;
 	//public GameObject pauseUI;
 
-	public GameObject coeur3;
-	public GameObject coeur3empty;
-	public GameObject coeur2;
-	public GameObject coeur2empty;
-	public GameObject coeur1;
-	public GameObject coeur1empty;
+//	public GameObject coeur3;
+//	public GameObject coeur3empty;
+//	public GameObject coeur2;
+//	public GameObject coeur2empty;
+//	public GameObject coeur1;
+//	public GameObject coeur1empty;
+
+	public GameObject plume3;
+	public GameObject plume2;
+	public GameObject plume1;
+
+	Animator animPlume3;
+	Animator animPlume2;
+	Animator animPlume1;
 
 	MoveCameraNEW movecameranewscript;
 	public GameObject laCamera;
@@ -70,6 +78,10 @@ public class SauvegardeTest : MonoBehaviour {
 		powerupscriptdeuxieme = powerup2.GetComponent<PowerUp> ();
 		spriterendererplayer = GetComponent<SpriteRenderer> ();
 		lemenupause = GetComponent <MenuPause> ();
+
+		animPlume3 = plume3.GetComponent<Animator> ();
+		animPlume2 = plume2.GetComponent<Animator> ();
+		animPlume1 = plume1.GetComponent<Animator> ();
 
 		lemenupause.enabled = true;
 
@@ -185,15 +197,15 @@ public class SauvegardeTest : MonoBehaviour {
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
 				nbVie--;
-				coeur3empty.SetActive (true);
-				coeur3.SetActive (false);
+				//coeur3empty.SetActive (true);
+				//coeur3.SetActive (false);
 			} else if (nbVie == 2) {
 				StartCoroutine (YoureHurt());
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
 				nbVie--;
-				coeur2empty.SetActive (true);
-				coeur2.SetActive (false);
+				//coeur2empty.SetActive (true);
+				//coeur2.SetActive (false);
 			} 
 			else if (nbVie <= 1) {
 				StartCoroutine (YouDied ());
@@ -207,14 +219,14 @@ public class SauvegardeTest : MonoBehaviour {
 			if (nbVie == 1) {
 				other.gameObject.SetActive (false);
 				nbVie++;
-				coeur2.SetActive (true);
-				coeur2empty.SetActive (false);
+				//coeur2.SetActive (true);
+				//coeur2empty.SetActive (false);
 			}
 			else if (nbVie == 2) {
 				other.gameObject.SetActive (false);
 				nbVie++;
-				coeur3.SetActive (true);
-				coeur3empty.SetActive (false);
+				//coeur3.SetActive (true);
+				//coeur3empty.SetActive (false);
 			}
 			else if (nbVie == 3) {
 				other.gameObject.SetActive (false);
@@ -264,8 +276,8 @@ public class SauvegardeTest : MonoBehaviour {
 
 	IEnumerator YouDied () {
 		lemenupause.enabled = false;
-		coeur1empty.SetActive (true);
-		coeur1.SetActive (false);
+		//coeur1empty.SetActive (true);
+		//coeur1.SetActive (false);
 		movecameranewscript.enabled = false;
 		anim.SetBool("Die", true);
 		print ("Pow-pow t'es mort!");
@@ -280,11 +292,11 @@ public class SauvegardeTest : MonoBehaviour {
 
 	IEnumerator DeathByScreen(){											// LE PLAYER MEURT QUAND IL SORT DE L'ÉCRAN
 		if (nbVie == 2) {
-			coeur2empty.SetActive (true);
-			coeur2.SetActive (false);
+			//coeur2empty.SetActive (true);
+			//coeur2.SetActive (false);
 			yield return new WaitForSeconds (0.5f);
-			coeur1empty.SetActive (true);
-			coeur1.SetActive (false);
+			//coeur1empty.SetActive (true);
+			//coeur1.SetActive (false);
 			movecameranewscript.enabled = false;
 			anim.SetBool("Die", true);
 			print ("Pow-pow t'es mort!");
@@ -296,14 +308,14 @@ public class SauvegardeTest : MonoBehaviour {
 			powerupUI.SetActive (false);
 			dieUI.SetActive (true);
 		} else if (nbVie == 3) {
-			coeur3empty.SetActive (true);
-			coeur3.SetActive (false);
+			//coeur3empty.SetActive (true);
+			//coeur3.SetActive (false);
 			yield return new WaitForSeconds (0.5f);
-			coeur2empty.SetActive (true);
-			coeur2.SetActive (false);
+			//coeur2empty.SetActive (true);
+			//coeur2.SetActive (false);
 			yield return new WaitForSeconds (0.5f);
-			coeur1empty.SetActive (true);
-			coeur1.SetActive (false);
+			//coeur1empty.SetActive (true);
+			//coeur1.SetActive (false);
 			movecameranewscript.enabled = false;
 			anim.SetBool("Die", true);
 			print ("Pow-pow t'es mort!");
