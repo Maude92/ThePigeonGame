@@ -77,11 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bd021fdd3434ec7a09da5ff1058963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: 30
+  CeTrigger: {fileID: 0}
   InterfacePsyIsHere: 0
-  BullePsy: {fileID: 1599072152629142, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
-  BullePsygeon: {fileID: 114317183060961814, guid: d01e47a2973144d3e82a3e8da2735a8f,
-    type: 2}
   PsyCanvas: {fileID: 1764859759766048, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
   TexteDuPsy: {fileID: 114706748778575934, guid: d01e47a2973144d3e82a3e8da2735a8f,
     type: 2}
