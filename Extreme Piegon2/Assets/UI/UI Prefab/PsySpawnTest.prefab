@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1745885004789936}
+  m_RootGameObject: {fileID: 1894661276482790}
   m_IsPrefabParent: 1
---- !u!1 &1745885004789936
+--- !u!1 &1894661276482790
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4899914832964662}
-  - component: {fileID: 61300771436056204}
-  - component: {fileID: 114429901163071040}
+  - component: {fileID: 4451275686601688}
+  - component: {fileID: 61369435884155094}
+  - component: {fileID: 114492023299769936}
   m_Layer: 0
   m_Name: PsySpawnTest
   m_TagString: Untagged
@@ -28,25 +28,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4899914832964662
+--- !u!4 &4451275686601688
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745885004789936}
+  m_GameObject: {fileID: 1894661276482790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.8, y: 0, z: -10}
+  m_LocalPosition: {x: 28.469828, y: -0.79461026, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61300771436056204
+--- !u!61 &61369435884155094
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745885004789936}
+  m_GameObject: {fileID: 1894661276482790}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -66,26 +66,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 15.57163}
   m_EdgeRadius: 0
---- !u!114 &114429901163071040
+--- !u!114 &114492023299769936
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745885004789936}
+  m_GameObject: {fileID: 1894661276482790}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75bd021fdd3434ec7a09da5ff1058963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: 30
+  CeTrigger: {fileID: 1894661276482790}
   InterfacePsyIsHere: 0
-  BullePsy: {fileID: 1599072152629142, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
-  BullePsygeon: {fileID: 114317183060961814, guid: d01e47a2973144d3e82a3e8da2735a8f,
-    type: 2}
-  PsyCanvas: {fileID: 1764859759766048, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
-  TexteDuPsy: {fileID: 114706748778575934, guid: d01e47a2973144d3e82a3e8da2735a8f,
-    type: 2}
-  BoutonX: {fileID: 114059952191159680, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
-  BoutonB: {fileID: 114588491724734038, guid: d01e47a2973144d3e82a3e8da2735a8f, type: 2}
+  PsyCanvas: {fileID: 0}
+  TexteDuPsy: {fileID: 0}
+  BoutonX: {fileID: 0}
+  BoutonB: {fileID: 0}
   QuestionPsy: Are you sure about that ?
   ReponsePigeon: '            Yes                      No'

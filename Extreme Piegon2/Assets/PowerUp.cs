@@ -116,7 +116,8 @@ public class PowerUp : MonoBehaviour {
 		killeverybody = true;
 		yield return new WaitForSeconds (0.2f);
 		killeverybody = false;
-		TrigDestruction.SetActive (false);
+		//TrigDestruction.SetActive (false);
+		yield return new WaitForSeconds (1f);
 		player.layer = LayerMask.NameToLayer ("Player");
 	}
 
