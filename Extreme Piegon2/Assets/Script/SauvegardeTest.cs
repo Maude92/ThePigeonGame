@@ -35,6 +35,7 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject dieUI;
 	public GameObject powerupUI;
 	public GameObject nextlevelUI;
+	//public GameObject pauseUI;
 
 	public GameObject coeur3;
 	public GameObject coeur3empty;
@@ -52,6 +53,11 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject powerup1;
 	public GameObject powerup2;
 
+	MenuPause lemenupause;
+
+//	public GameObject targetCollectibles;
+//	public float speedToTarget;
+
 	SpriteRenderer spriterendererplayer;
 
 
@@ -63,6 +69,9 @@ public class SauvegardeTest : MonoBehaviour {
 		powerupscriptpremier = powerup1.GetComponent<PowerUp> ();
 		powerupscriptdeuxieme = powerup2.GetComponent<PowerUp> ();
 		spriterendererplayer = GetComponent<SpriteRenderer> ();
+		lemenupause = GetComponent <MenuPause> ();
+
+		lemenupause.enabled = true;
 
 		countCollectible = 0;
 
@@ -131,11 +140,11 @@ public class SauvegardeTest : MonoBehaviour {
 				// POUR LES ÉTOILES
 
 				// COMBIEN D'ÉTOILES?												// ON CHANGERA LES CONDITIONS PLUS TARD QUAND ON SAURA C'EST QUOI QUE ÇA PREND POUR LES ÉTOILES
-			if (countCollectible < 75) {
+			if (countCollectible < 50) {
 				nbEtoile = 1;
-			} else if (countCollectible >= 75 && countCollectible <= 99) {
+			} else if (countCollectible >= 50 && countCollectible <= 69) {
 				nbEtoile = 2;
-			} else if (countCollectible == 100) {
+			} else if (countCollectible == 70) {
 				nbEtoile = 3;
 			}
 
@@ -249,8 +258,12 @@ public class SauvegardeTest : MonoBehaviour {
 		}
 	}
 
+//	IEnumerator CollectiblesToTarget(){
+//	// ???
+//	}
 
 	IEnumerator YouDied () {
+		lemenupause.enabled = false;
 		coeur1empty.SetActive (true);
 		coeur1.SetActive (false);
 		movecameranewscript.enabled = false;
@@ -335,15 +348,28 @@ public class SauvegardeTest : MonoBehaviour {
 		}
 			
 
-	// Back button (... 6)
-		if (Input.GetButtonDown ("360_BackButton")){
-			print ("Je pèse sur: back button!");
-		}
+//	// Back button (... 6)
+//		if (Input.GetButtonDown ("360_BackButton")){
+//			print ("Je pèse sur: back button!");
+//		}
 
-	// Start button (... 7)
-		if (Input.GetButtonDown ("360_StartButton")){
-			print ("Je pèse sur: start button!");
-		}
+	// Start button (... 7)						// MIS DANS UN AUTRE SCRIPT
+//		if (Input.GetButtonDown ("360_StartButton") || Input.GetKeyDown (KeyCode.Escape)){
+//			//print ("Je pèse sur: start button!");
+//			if (Time.timeScale == 1) {
+//				print ("Je pause le jeu");
+//				Time.timeScale = 0;
+//				mainUI.SetActive (false);
+//				powerupUI.SetActive (false);
+//				pauseUI.SetActive (true);
+//			} else {
+//				print ("Je remets le jeu en marche");
+//				Time.timeScale == 1;
+//				pauseUI.SetActive (false);
+//				mainUI.SetActive (true);
+//				powerupUI.SetActive (true);
+//			}
+//		}
 
 	// D-PAD
 	//RIGHT d-pad...

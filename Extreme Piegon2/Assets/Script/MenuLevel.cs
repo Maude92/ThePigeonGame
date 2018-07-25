@@ -6,11 +6,25 @@ using System.Collections;
 public class MenuLevel : MonoBehaviour {
 
 	public GameObject loadingScreen;
+	public GameObject player;
 
 	public Slider slider;
 	public Text progressText;
 	public Text[] randomFact;
 	public Text randomFactText;
+
+	MenuPause lemenupause;
+	SauvegardeTest playerscript;
+
+	public GameObject pauseUI;
+	public GameObject mainUI;
+	public GameObject powerupUI;
+
+
+	void Start (){
+		lemenupause = player.GetComponent<MenuPause> ();
+		playerscript = player.GetComponent<SauvegardeTest> ();
+	}
 
 		
 	public void TryAgain (){
@@ -24,6 +38,22 @@ public class MenuLevel : MonoBehaviour {
 	public void MainMenu(){
 		SceneManager.LoadScene (0);
 	}
+
+	public void ResumeGame(){
+		lemenupause.modePause = !lemenupause.modePause;
+		print ("Je remets le jeu en marche");
+		Time.timeScale = 1;
+		pauseUI.SetActive (false);
+		mainUI.SetActive (true);
+		powerupUI.SetActive (true);
+		playerscript.enabled = true;
+	}
+
+	public void QuitGame(){
+		print ("Bye bye");
+		Application.Quit ();
+	}
+
 		
 
 
