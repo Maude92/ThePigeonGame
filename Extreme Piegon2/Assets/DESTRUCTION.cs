@@ -16,6 +16,9 @@ public class DESTRUCTION : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other){
 		if (other.gameObject.tag == "Ennemi" && powerupscript.killeverybody == true) {
+			Collider2D ennemiCol;
+			ennemiCol = other.gameObject.GetComponent<Collider2D> ();
+			ennemiCol.enabled = false;
 			Animator anim;
 			anim = other.gameObject.GetComponent<Animator> ();
 			anim.SetBool ("Die", true);

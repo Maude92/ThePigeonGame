@@ -61,6 +61,9 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject powerup1;
 	public GameObject powerup2;
 
+	public GameObject miniBeakyUI;
+	Animator animMiniBeakyUI;
+
 	MenuPause lemenupause;
 
 //	public GameObject targetCollectibles;
@@ -82,6 +85,7 @@ public class SauvegardeTest : MonoBehaviour {
 		animPlume3 = plume3.GetComponent<Animator> ();
 		animPlume2 = plume2.GetComponent<Animator> ();
 		animPlume1 = plume1.GetComponent<Animator> ();
+		animMiniBeakyUI = miniBeakyUI.GetComponent<Animator> ();
 
 		animPlume3.SetBool ("Move", true);
 
@@ -126,6 +130,7 @@ public class SauvegardeTest : MonoBehaviour {
 		if (other.gameObject.tag == "Collectible") {
 			countCollectible++;
 			other.gameObject.SetActive (false);
+			animMiniBeakyUI.SetBool ("Eat", true);
 		}
 
 
@@ -195,6 +200,7 @@ public class SauvegardeTest : MonoBehaviour {
 		// LES ENNEMIS
 		if (other.gameObject.tag == "Ennemi" && gameObject.layer == LayerMask.NameToLayer ("Player")) {
 			if (nbVie == 3) {
+				animMiniBeakyUI.SetBool ("Hurt", true);
 				StartCoroutine (YoureHurt());
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
@@ -204,6 +210,7 @@ public class SauvegardeTest : MonoBehaviour {
 				//coeur3empty.SetActive (true);
 				//coeur3.SetActive (false);
 			} else if (nbVie == 2) {
+				animMiniBeakyUI.SetBool ("Hurt", true);
 				StartCoroutine (YoureHurt());
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
@@ -214,6 +221,7 @@ public class SauvegardeTest : MonoBehaviour {
 				//coeur2.SetActive (false);
 			} 
 			else if (nbVie <= 1) {
+				animMiniBeakyUI.SetBool ("Hurt", true);								// METTRE ANIM POUR MINI BEAKY DE QUAND TU MEURS
 				StartCoroutine (YouDied ());
 			} 
 		}

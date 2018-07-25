@@ -16,7 +16,7 @@ public class ComicDommage : MonoBehaviour {
 //	}
 
 	void OnTriggerEnter2D (Collider2D other){
-		if (other.gameObject.tag == "Ennemi") {
+		if (other.gameObject.tag == "Ennemi" && gameObject.layer == LayerMask.NameToLayer ("Player")) {
 			NumberOfImages = Random.Range (1, 8);
 			DammageCheck ();
 		}

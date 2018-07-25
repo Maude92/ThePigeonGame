@@ -34,6 +34,14 @@ public class PowerUp : MonoBehaviour {
 	SpriteRenderer spriterendererpowerup;
 	Collider2D collider2dpowerup;
 
+	public GameObject miniBeakyUI;
+	Animator animMiniBeakyUI;
+
+	public GameObject powerUpCanvas;
+	Animator animpowerupcanvas;
+
+	public GameObject canvasRawrrr;
+
 
 	void Start (){
 		PowerUp_SoDUI.enabled = false;
@@ -47,11 +55,15 @@ public class PowerUp : MonoBehaviour {
 		movecameranewscript = laCamera.GetComponent<MoveCameraNEW> ();
 		gofasterscript = goFaster.GetComponent<GoFaster> ();
 
+		animMiniBeakyUI = miniBeakyUI.GetComponent<Animator> ();
+		animpowerupcanvas = powerUpCanvas.GetComponent<Animator> ();
+
 		//TrigDestruction.SetActive (false);
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Player" && BeakyGotAPowerUp == false) {
+			
 			BeakyGotAPowerUp = true; //à accéder avec le script de contrôle pour activer le PowerUp
 			PowerUpCheck ();
 		}
@@ -72,7 +84,7 @@ public class PowerUp : MonoBehaviour {
 			spriterendererpowerup.enabled = false;
 			collider2dpowerup.enabled = false;
 			PowerUp_SoDUI.enabled = true; //mettre powerup dans la box
-
+			animpowerupcanvas.SetBool ("Powerup", true);
 			//Désactiver les autres dans la box
 			PowerUp_InvicibilityUI.enabled = false;
 			//... autre s'il y a lieu
@@ -84,14 +96,14 @@ public class PowerUp : MonoBehaviour {
 			spriterendererpowerup.enabled = false;
 			collider2dpowerup.enabled = false;
 			PowerUp_InvicibilityUI.enabled = true;
-
+			animpowerupcanvas.SetBool ("Powerup", true);
 			PowerUp_SoDUI.enabled = false;
 		}
 	}
 
 	public void ActivatePowerUp(){
 		if (WichPowerUp == 1) {
-			PowerUp_SoDUI.enabled = false;
+			//PowerUp_SoDUI.enabled = false;
 			StartCoroutine (KillEverybodyNow ());
 //			killeverybody = true;
 			//TrigDestruction.SetActive (true);
@@ -104,7 +116,7 @@ public class PowerUp : MonoBehaviour {
 		}
 
 		if (WichPowerUp == 2) {
-			PowerUp_InvicibilityUI.enabled = false;
+			//PowerUp_InvicibilityUI.enabled = false;
 			StartCoroutine (ImInvincible ());
 			//print ("Un jours il y aura qqchose ici");
 			//dommage = 0 pendant x secondes
@@ -112,16 +124,24 @@ public class PowerUp : MonoBehaviour {
 	}
 
 	IEnumerator KillEverybodyNow () {
+		animpowerupcanvas.SetBool ("PowerupUsed", true);
+		animMiniBeakyUI.SetBool ("Scream", true);
+		canvasRawrrr.SetActive (true);
 		player.layer = LayerMask.NameToLayer ("Fuckall");
 		killeverybody = true;
 		yield return new WaitForSeconds (0.2f);
 		killeverybody = false;
 		//TrigDestruction.SetActive (false);
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (0.5f);
 		player.layer = LayerMask.NameToLayer ("Player");
+		yield return new WaitForSeconds (1.5f);
+		canvasRawrrr.SetActive (false);
+		PowerUp_SoDUI.enabled = false;
 	}
 
 	IEnumerator ImInvincible () {
+		animpowerupcanvas.SetBool ("PowerupUsed", true);
+		animMiniBeakyUI.SetBool ("Invincible", true);
 		print ("Un jour le powerup commencera maintenant.");
 		gofasterscript.newSpeed = 9;
 		movecameranewscript.speed = 6;
@@ -133,5 +153,6 @@ public class PowerUp : MonoBehaviour {
 		scriptplayer.maxSpeed = 5;
 		player.layer = LayerMask.NameToLayer ("Player");
 		print ("Un jour le powerup sera fini maintenant.");
+		PowerUp_InvicibilityUI.enabled = false;
 	}
 }

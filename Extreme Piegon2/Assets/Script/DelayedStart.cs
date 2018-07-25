@@ -13,11 +13,13 @@ public class DelayedStart : MonoBehaviour {
 	public GameObject countdownGo;
 
 	SauvegardeTest sauvegardetest;
+	MenuPause menupausescript;
 	public GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		sauvegardetest = player.GetComponent<SauvegardeTest> ();
+		menupausescript = player.GetComponent<MenuPause> ();
 
 		StartCoroutine (StartDelay());
 
@@ -42,6 +44,7 @@ public class DelayedStart : MonoBehaviour {
 
 		// Un autre test
 		sauvegardetest.enabled = false;
+		menupausescript.enabled = false;
 		Time.timeScale = 0;
 		countdown3.SetActive (true);
 		yield return new WaitForSecondsRealtime (1f);
@@ -57,6 +60,7 @@ public class DelayedStart : MonoBehaviour {
 		countdownGo.SetActive (false);
 		Time.timeScale = 1;
 		sauvegardetest.enabled = true;
+		menupausescript.enabled = true;
 	}
 
 }
