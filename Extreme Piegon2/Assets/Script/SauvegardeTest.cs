@@ -52,6 +52,8 @@ public class SauvegardeTest : MonoBehaviour {
 	Animator animPlume2;
 	Animator animPlume1;
 
+	public GameObject particlesHurt;
+
 	MoveCameraNEW movecameranewscript;
 	public GameObject laCamera;
 	public GameObject spawnBeaky;
@@ -201,6 +203,7 @@ public class SauvegardeTest : MonoBehaviour {
 		if (other.gameObject.tag == "Ennemi" && gameObject.layer == LayerMask.NameToLayer ("Player")) {
 			if (nbVie == 3) {
 				animMiniBeakyUI.SetBool ("Hurt", true);
+				particlesHurt.SetActive (true);
 				StartCoroutine (YoureHurt());
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
@@ -211,6 +214,7 @@ public class SauvegardeTest : MonoBehaviour {
 				//coeur3.SetActive (false);
 			} else if (nbVie == 2) {
 				animMiniBeakyUI.SetBool ("Hurt", true);
+				particlesHurt.SetActive (true);
 				StartCoroutine (YoureHurt());
 				anim.SetBool ("Hurt", true);
 				print ("BAM! Ça fait mal...");
@@ -222,6 +226,7 @@ public class SauvegardeTest : MonoBehaviour {
 			} 
 			else if (nbVie <= 1) {
 				animMiniBeakyUI.SetBool ("Hurt", true);								// METTRE ANIM POUR MINI BEAKY DE QUAND TU MEURS
+				particlesHurt.SetActive (true);
 				StartCoroutine (YouDied ());
 			} 
 		}
