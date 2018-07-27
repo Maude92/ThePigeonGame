@@ -53,6 +53,11 @@ public class SauvegardeTest : MonoBehaviour {
 	Animator animPlume1;
 
 	public GameObject particlesHurt;
+	public GameObject particlesBerry0;
+	public GameObject particlesBerry1;
+	public GameObject particlesBerry2;
+	public GameObject particlesBerry3;
+	public GameObject particlesBerry4;
 
 	MoveCameraNEW movecameranewscript;
 	public GameObject laCamera;
@@ -116,7 +121,7 @@ public class SauvegardeTest : MonoBehaviour {
 	void Update () {
 		UserInputs ();
 
-		countCollectibleText.text = "Count Collectible : " + countCollectible;
+		countCollectibleText.text = "" + countCollectible;
 		totalCollectibleText.text = "Total Collectible : " + totalCollectible;
 		highScoreLTestText.text = "Highscore : " + highScoreLevelTest;
 
@@ -133,6 +138,24 @@ public class SauvegardeTest : MonoBehaviour {
 			countCollectible++;
 			other.gameObject.SetActive (false);
 			animMiniBeakyUI.SetBool ("Eat", true);
+
+			// POUR LES PARTICULES
+			if (!particlesBerry0.activeInHierarchy) {
+				particlesBerry0.transform.position = other.transform.position;
+				particlesBerry0.SetActive (true);
+			} else if (particlesBerry0.activeInHierarchy && !particlesBerry1.activeInHierarchy && !particlesBerry2.activeInHierarchy && !particlesBerry3.activeInHierarchy) {
+				particlesBerry1.transform.position = other.transform.position;
+				particlesBerry1.SetActive (true);
+			} else if (particlesBerry0.activeInHierarchy && particlesBerry1.activeInHierarchy && !particlesBerry2.activeInHierarchy && !particlesBerry3.activeInHierarchy) {
+				particlesBerry2.transform.position = other.transform.position;
+				particlesBerry2.SetActive (true);
+			} else if (particlesBerry0.activeInHierarchy && particlesBerry1.activeInHierarchy && particlesBerry2.activeInHierarchy && !particlesBerry3.activeInHierarchy) {
+				particlesBerry3.transform.position = other.transform.position;
+				particlesBerry3.SetActive (true);
+			} else if (particlesBerry0.activeInHierarchy && particlesBerry1.activeInHierarchy && particlesBerry2.activeInHierarchy && particlesBerry3.activeInHierarchy) {
+				particlesBerry4.transform.position = other.transform.position;
+				particlesBerry4.SetActive (true);
+			}
 		}
 
 
