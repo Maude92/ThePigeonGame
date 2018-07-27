@@ -84,5 +84,5 @@ MonoBehaviour:
   TexteDuPsy: {fileID: 0}
   BoutonX: {fileID: 0}
   BoutonB: {fileID: 0}
-  TextPsyYesPU: A scream of what ?
+  TextPsyYesPU: '   A scream of what ?'
   TextPsyNoPU: Was that a Power Up ?

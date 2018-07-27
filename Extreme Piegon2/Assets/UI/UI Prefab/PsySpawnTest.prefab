@@ -84,4 +84,4 @@ MonoBehaviour:
   BoutonX: {fileID: 0}
   BoutonB: {fileID: 0}
   QuestionPsy: Are you sure about that ?
-  ReponsePigeon: '            Yes                      No'
+  ReponsePigeon: '           Yes                No'
