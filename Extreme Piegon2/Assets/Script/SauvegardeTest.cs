@@ -35,6 +35,8 @@ public class SauvegardeTest : MonoBehaviour {
 	public GameObject dieUI;
 	public GameObject powerupUI;
 	public GameObject nextlevelUI;
+	public GameObject newBeakyUI;
+	public GameObject psygeonUI;
 	//public GameObject pauseUI;
 
 //	public GameObject coeur3;
@@ -53,6 +55,7 @@ public class SauvegardeTest : MonoBehaviour {
 	Animator animPlume1;
 
 	public GameObject particlesHurt;
+	public GameObject particlesPlume;
 	public GameObject particlesBerry0;
 	public GameObject particlesBerry1;
 	public GameObject particlesBerry2;
@@ -136,7 +139,7 @@ public class SauvegardeTest : MonoBehaviour {
 		// LES COLLECTIBLES
 		if (other.gameObject.tag == "Collectible") {
 			countCollectible++;
-			other.gameObject.SetActive (false);
+			//other.gameObject.SetActive (false);
 			animMiniBeakyUI.SetBool ("Eat", true);
 
 			// POUR LES PARTICULES
@@ -175,6 +178,8 @@ public class SauvegardeTest : MonoBehaviour {
 			countCollectibleTextEndOfLevel.text = ("Your score : " + countCollectible);
 			highScoreLTestTextEndOfLevel.text = ("High score : " + highScoreLevelTest);
 			mainUI.SetActive (false);
+			newBeakyUI.SetActive (false);
+			psygeonUI.SetActive (false);
 			powerupUI.SetActive (false);
 			nextlevelUI.SetActive (true);
 			totalCollectible = totalCollectible + countCollectible;
@@ -260,6 +265,8 @@ public class SauvegardeTest : MonoBehaviour {
 			print ("+ 1 de vie! Yay!");
 			if (nbVie == 1) {
 				other.gameObject.SetActive (false);
+				particlesPlume.transform.position = other.gameObject.transform.position;
+				particlesPlume.SetActive (true);
 				nbVie++;
 				// Plume 1 arrête de bouger et plume 2 recommence à bouger
 				animPlume1.SetBool ("Move", false);
@@ -270,6 +277,8 @@ public class SauvegardeTest : MonoBehaviour {
 			}
 			else if (nbVie == 2) {
 				other.gameObject.SetActive (false);
+				particlesPlume.transform.position = other.gameObject.transform.position;
+				particlesPlume.SetActive (true);
 				nbVie++;
 				// Plume 2 arrête de bouger et plume 3 recommence à bouger
 				animPlume2.SetBool ("Move", false);
@@ -280,6 +289,8 @@ public class SauvegardeTest : MonoBehaviour {
 			}
 			else if (nbVie == 3) {
 				other.gameObject.SetActive (false);
+				particlesPlume.transform.position = other.gameObject.transform.position;
+				particlesPlume.SetActive (true);
 				print ("Too bad. Déjà plein d'énergie.");
 			}
 
@@ -404,7 +415,7 @@ public class SauvegardeTest : MonoBehaviour {
 
 	void UserInputs () {
 	// A  button ou Up Arrow
-		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetButtonDown ("360_AButton")) {
+		if (Input.GetKeyDown (KeyCode.UpArrow) || Input.GetButtonDown ("360_AButton") || Input.GetKeyDown (KeyCode.W)) {
 			anim.SetBool ("Fly", true);
 			rbpiegon.velocity = Vector2.zero;
 			rbpiegon.AddForce (new Vector2 (0, upForce));
@@ -468,7 +479,6 @@ public class SauvegardeTest : MonoBehaviour {
 			powerupscriptpremier.BeakyGotAPowerUp = false;
 			powerupscriptpremier.ActivatePowerUp ();
 			print ("J'utilise le powerup #2!");
-			//print ("Je pèse sur les deux triggers en même temps et j'ai utilisé un powerup!");
 
 //			if (powerupscriptpremier.BeakyGotAPowerUp == true) {
 //				powerupscriptpremier.BeakyGotAPowerUp = false;
@@ -490,9 +500,8 @@ public class SauvegardeTest : MonoBehaviour {
 //			print ("Je pèse juste sur le trigger gauche");
 //		} else if (Input.GetAxis ("360_TriggerL") < 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
 //			print ("Je pèse juste sur le trigger droit");
-		}
-
-		if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptdeuxieme.BeakyGotAPowerUp == true) {
+		
+		} else if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptdeuxieme.BeakyGotAPowerUp == true && powerupscriptpremier.BeakyGotAPowerUp == false) {
 			powerupscriptdeuxieme.BeakyGotAPowerUp = false;
 			powerupscriptdeuxieme.ActivatePowerUp ();
 			print ("J'utilise le powerup #1!");

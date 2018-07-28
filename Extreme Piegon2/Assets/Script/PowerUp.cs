@@ -81,6 +81,7 @@ public class PowerUp : MonoBehaviour {
 		if (WichPowerUp == 1) {
 			//Désactiver le PowerUp du World et activer le PowerUp dans la box
 			//PowerUp_SoDWorld.SetActive (false); //faire disparaitre le powerup dans le monde
+			//StartCoroutine (WaitBeforeByeBye());														// POUR JUICE
 			spriterendererpowerup.enabled = false;
 			collider2dpowerup.enabled = false;
 			PowerUp_SoDUI.enabled = true; //mettre powerup dans la box
@@ -93,7 +94,8 @@ public class PowerUp : MonoBehaviour {
 		//Invincibility
 		if (WichPowerUp == 2) {
 			//PowerUp_InvincibilityWorld.SetActive (false);
-			spriterendererpowerup.enabled = false;
+			StartCoroutine (WaitBeforeByeBye());
+			//spriterendererpowerup.enabled = false;
 			collider2dpowerup.enabled = false;
 			PowerUp_InvicibilityUI.enabled = true;
 			animpowerupcanvas.SetBool ("Powerup", true);
@@ -154,5 +156,10 @@ public class PowerUp : MonoBehaviour {
 		player.layer = LayerMask.NameToLayer ("Player");
 		print ("Un jour le powerup sera fini maintenant.");
 		PowerUp_InvicibilityUI.enabled = false;
+	}
+
+	IEnumerator WaitBeforeByeBye(){
+		yield return new WaitForSeconds (1);
+		spriterendererpowerup.enabled = false;
 	}
 }
