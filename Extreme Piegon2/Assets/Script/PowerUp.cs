@@ -41,6 +41,7 @@ public class PowerUp : MonoBehaviour {
 	Animator animpowerupcanvas;
 
 	public GameObject canvasRawrrr;
+	public GameObject particulesPowerup;
 
 
 	void Start (){
@@ -142,6 +143,7 @@ public class PowerUp : MonoBehaviour {
 	}
 
 	IEnumerator ImInvincible () {
+		particulesPowerup.SetActive (true);
 		animpowerupcanvas.SetBool ("PowerupUsed", true);
 		animMiniBeakyUI.SetBool ("Invincible", true);
 		print ("Un jour le powerup commencera maintenant.");
