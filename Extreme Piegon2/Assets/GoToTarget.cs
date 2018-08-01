@@ -12,17 +12,27 @@ public class GoToTarget : MonoBehaviour {
 
 	Animator anim;
 
+	GoToTarget gototargetscript;
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent <Animator> ();
 
 		step = speedToTarget * Time.deltaTime;
+
+		moveToTarget = false;
+
+		gototargetscript = GetComponent<GoToTarget> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (moveToTarget == true) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
+			print ("Je bouge jusqu'au target.");
+			if (transform.position == target.position) {
+				StartCoroutine (DoneMoving ());
+			}
 		}
 	}
 
@@ -46,5 +56,12 @@ public class GoToTarget : MonoBehaviour {
 		anim.SetBool ("Miam", true);
 		moveToTarget = true;
 		yield return new WaitForSeconds (1);
+	}
+
+	IEnumerator DoneMoving (){
+		print ("J'ai fini.");
+		yield return new WaitForSeconds (3);
+		moveToTarget = false;
+		gototargetscript.enabled = false;
 	}
 }

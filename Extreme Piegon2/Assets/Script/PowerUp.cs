@@ -82,8 +82,8 @@ public class PowerUp : MonoBehaviour {
 		if (WichPowerUp == 1) {
 			//Désactiver le PowerUp du World et activer le PowerUp dans la box
 			//PowerUp_SoDWorld.SetActive (false); //faire disparaitre le powerup dans le monde
-			//StartCoroutine (WaitBeforeByeBye());														// POUR JUICE
-			spriterendererpowerup.enabled = false;
+			StartCoroutine (WaitBeforeByeBye());														// POUR JUICE
+			//spriterendererpowerup.enabled = false;
 			collider2dpowerup.enabled = false;
 			PowerUp_SoDUI.enabled = true; //mettre powerup dans la box
 			animpowerupcanvas.SetBool ("Powerup", true);
@@ -161,7 +161,7 @@ public class PowerUp : MonoBehaviour {
 	}
 
 	IEnumerator WaitBeforeByeBye(){
-		yield return new WaitForSeconds (1);
+		yield return new WaitForSeconds (2);
 		spriterendererpowerup.enabled = false;
 	}
 }
