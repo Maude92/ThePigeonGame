@@ -1603,6 +1603,7 @@ MonoBehaviour:
   highScoreLevelTest: 0
   quelLevel: 0
   highScoreEtoileW1L1: 0
+  ayoye: 0
   countCollectibleText: {fileID: 1340233204}
   totalCollectibleText: {fileID: 858276888}
   highScoreLTestText: {fileID: 300739282}
@@ -45194,6 +45195,7 @@ MonoBehaviour:
   - {fileID: 1429537688}
   - {fileID: 295912870}
   - {fileID: 1799409141}
+  player: {fileID: 1693702673}
 --- !u!1 &1713771993
 GameObject:
   m_ObjectHideFlags: 0
@@ -54821,6 +54823,14 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975229057151924, guid: 489a209bdd52f44018d38eadecede070, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962366312660724, guid: 489a209bdd52f44018d38eadecede070, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 489a209bdd52f44018d38eadecede070, type: 2}

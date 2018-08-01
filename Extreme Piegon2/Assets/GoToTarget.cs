@@ -29,7 +29,7 @@ public class GoToTarget : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Player" && gameObject.layer == LayerMask.NameToLayer ("Powerup")) {
 			StartCoroutine (PowerupJuice ());
-		} else {
+		} else if (other.gameObject.tag == "Player" && gameObject.layer == LayerMask.NameToLayer("Berry")) {
 			StartCoroutine (BerryJuice ());
 		}
 	}

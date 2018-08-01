@@ -19,6 +19,8 @@ public class SauvegardeTest : MonoBehaviour {
 	//public int totaletoilew1l1;
 	public int highScoreEtoileW1L1;
 
+	public bool ayoye;
+
 	public Text countCollectibleText;
 	public Text totalCollectibleText;
 	public Text highScoreLTestText;
@@ -80,7 +82,7 @@ public class SauvegardeTest : MonoBehaviour {
 //	public float speedToTarget;
 
 	SpriteRenderer spriterendererplayer;
-
+	Collider2D colliderplayer;
 
 	// Use this for initialization
 	void Start () {
@@ -91,6 +93,7 @@ public class SauvegardeTest : MonoBehaviour {
 		powerupscriptdeuxieme = powerup2.GetComponent<PowerUp> ();
 		spriterendererplayer = GetComponent<SpriteRenderer> ();
 		lemenupause = GetComponent <MenuPause> ();
+		colliderplayer = GetComponent<Collider2D> ();
 
 		animPlume3 = plume3.GetComponent<Animator> ();
 		animPlume2 = plume2.GetComponent<Animator> ();
@@ -112,6 +115,8 @@ public class SauvegardeTest : MonoBehaviour {
 		highScoreEtoileW1L1 = ZPlayerPrefs.GetInt ("HSEtoileW1L1", 0);
 
 		nbVie = 3;
+
+		ayoye = false;
 	}
 		
 	void FixedUpdate () {
@@ -230,6 +235,7 @@ public class SauvegardeTest : MonoBehaviour {
 		// LES ENNEMIS
 		if (other.gameObject.tag == "Ennemi" && gameObject.layer == LayerMask.NameToLayer ("Player")) {
 			if (nbVie == 3) {
+				ayoye = true;
 				animMiniBeakyUI.SetBool ("Hurt", true);
 				particlesHurt.SetActive (true);
 				StartCoroutine (YoureHurt());
@@ -238,9 +244,11 @@ public class SauvegardeTest : MonoBehaviour {
 				nbVie--;
 				animPlume3.SetBool ("Lose", true);
 				animPlume2.SetBool ("Move", true);
+				//StartCoroutine (YoureHurt());
 				//coeur3empty.SetActive (true);
 				//coeur3.SetActive (false);
 			} else if (nbVie == 2) {
+				ayoye = true;
 				animMiniBeakyUI.SetBool ("Hurt", true);
 				particlesHurt.SetActive (true);
 				StartCoroutine (YoureHurt());
@@ -249,6 +257,7 @@ public class SauvegardeTest : MonoBehaviour {
 				nbVie--;
 				animPlume2.SetBool ("Lose", true);
 				animPlume1.SetBool ("Move", true);
+				//StartCoroutine (YoureHurt());
 				//coeur2empty.SetActive (true);
 				//coeur2.SetActive (false);
 			} 
@@ -336,8 +345,10 @@ public class SauvegardeTest : MonoBehaviour {
 //	}
 
 	IEnumerator YouDied () {
+		colliderplayer.enabled = false;
 		lemenupause.enabled = false;
 		animPlume1.SetBool ("Lose", true);
+		ayoye = true;
 		//coeur1empty.SetActive (true);
 		//coeur1.SetActive (false);
 		movecameranewscript.enabled = false;
@@ -351,6 +362,7 @@ public class SauvegardeTest : MonoBehaviour {
 		mainUI.SetActive (false);
 		powerupUI.SetActive (false);
 		dieUI.SetActive (true);
+		//ayoye = false;
 	}
 
 	IEnumerator DeathByScreen(){											// LE PLAYER MEURT QUAND IL SORT DE L'ÉCRAN
@@ -404,8 +416,10 @@ public class SauvegardeTest : MonoBehaviour {
 
 	IEnumerator YoureHurt(){
 		gameObject.layer = LayerMask.NameToLayer ("Fuckall");
+		//ayoye = false;
 		yield return new WaitForSeconds (0.17f);
 		gameObject.layer = LayerMask.NameToLayer ("Player");
+		//ayoye = false;
 	}
 
 	public void Reset (){
