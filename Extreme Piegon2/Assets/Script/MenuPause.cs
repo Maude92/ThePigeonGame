@@ -12,6 +12,7 @@ public class MenuPause : MonoBehaviour {
 	public GameObject powerupUI;
 	public GameObject pauseUI;
 	public GameObject psygeonUI;
+	public GameObject imagePsygeonUI;
 	public GameObject playerUI;
 
 	public Text countCollectiblesTextForPause;
@@ -25,6 +26,8 @@ public class MenuPause : MonoBehaviour {
 	void Start () {
 		playerscript = GetComponent<SauvegardeTest> ();	
 		modePause = false;
+
+		Time.timeScale = 1;
 	}
 	
 	// Update is called once per frame
@@ -42,6 +45,7 @@ public class MenuPause : MonoBehaviour {
 				mainUI.SetActive (false);
 				playerUI.SetActive (false);
 				psygeonUI.SetActive (false);
+				imagePsygeonUI.SetActive (false);
 				powerupUI.SetActive (false);
 				pauseUI.SetActive (true);
 				Time.timeScale = 0;
@@ -52,6 +56,7 @@ public class MenuPause : MonoBehaviour {
 				mainUI.SetActive (true);
 				playerUI.SetActive (true);
 				psygeonUI.SetActive (true);
+				imagePsygeonUI.SetActive (true);
 				powerupUI.SetActive (true);
 				playerscript.enabled = true;
 			}

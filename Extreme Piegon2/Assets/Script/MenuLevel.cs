@@ -28,6 +28,10 @@ public class MenuLevel : MonoBehaviour {
 
 		
 	public void TryAgain (){
+		if (lemenupause.modePause == true) {
+			lemenupause.modePause = false;
+		}
+		Time.timeScale = 1;
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 
@@ -61,6 +65,11 @@ public class MenuLevel : MonoBehaviour {
 	// VERSION SI ON VEUT AJOUTER LE LOADING SCREEN
 
 	public void TryAgainLoad(){
+		if (lemenupause.modePause == true) {
+			lemenupause.modePause = false;
+		}
+		Time.timeScale = 1;
+
 	// POUR AFFICHER LES RANDOM FACTS.... DE MANIÈRE RANDOM
 		int indexRandomFact = Random.Range (0, randomFact.Length);
 		randomFactText.text = randomFact [indexRandomFact].text;
