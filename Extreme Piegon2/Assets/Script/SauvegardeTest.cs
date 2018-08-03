@@ -433,6 +433,7 @@ public class SauvegardeTest : MonoBehaviour {
 			anim.SetBool ("Fly", true);
 			rbpiegon.velocity = Vector2.zero;
 			rbpiegon.AddForce (new Vector2 (0, upForce));
+			//print ("Je pèse sur A");
 		}
 
 	// B button

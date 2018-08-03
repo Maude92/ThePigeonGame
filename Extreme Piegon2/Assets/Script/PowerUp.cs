@@ -42,6 +42,8 @@ public class PowerUp : MonoBehaviour {
 
 	public GameObject canvasRawrrr;
 	public GameObject particulesPowerup;
+	public GameObject particulesScream;
+	public GameObject particulesInvincible;
 
 
 	void Start (){
@@ -80,6 +82,8 @@ public class PowerUp : MonoBehaviour {
 
 		//Scream of Death
 		if (WichPowerUp == 1) {
+			particulesScream.transform.position = gameObject.transform.position;
+			particulesScream.SetActive (true);
 			//Désactiver le PowerUp du World et activer le PowerUp dans la box
 			//PowerUp_SoDWorld.SetActive (false); //faire disparaitre le powerup dans le monde
 			StartCoroutine (WaitBeforeByeBye());														// POUR JUICE
@@ -94,6 +98,8 @@ public class PowerUp : MonoBehaviour {
 
 		//Invincibility
 		if (WichPowerUp == 2) {
+			particulesInvincible.transform.position = gameObject.transform.position;
+			particulesInvincible.SetActive (true);
 			//PowerUp_InvincibilityWorld.SetActive (false);
 			StartCoroutine (WaitBeforeByeBye());
 			//spriterendererpowerup.enabled = false;

@@ -11,6 +11,8 @@ public class MenuPause : MonoBehaviour {
 	public GameObject mainUI;
 	public GameObject powerupUI;
 	public GameObject pauseUI;
+	public GameObject psygeonUI;
+	public GameObject playerUI;
 
 	public Text countCollectiblesTextForPause;
 	public Text highScoreTextForPause;
@@ -38,6 +40,8 @@ public class MenuPause : MonoBehaviour {
 				print ("Je pause le jeu");
 				playerscript.enabled = false;
 				mainUI.SetActive (false);
+				playerUI.SetActive (false);
+				psygeonUI.SetActive (false);
 				powerupUI.SetActive (false);
 				pauseUI.SetActive (true);
 				Time.timeScale = 0;
@@ -46,6 +50,8 @@ public class MenuPause : MonoBehaviour {
 				Time.timeScale = 1;
 				pauseUI.SetActive (false);
 				mainUI.SetActive (true);
+				playerUI.SetActive (true);
+				psygeonUI.SetActive (true);
 				powerupUI.SetActive (true);
 				playerscript.enabled = true;
 			}

@@ -14,12 +14,25 @@ public class DelayedStart : MonoBehaviour {
 
 	SauvegardeTest sauvegardetest;
 	MenuPause menupausescript;
+	MoveCameraNEW movecamerascript;
+	Rigidbody2D rbplayer;
+	SpriteRenderer srplayer;
+	SpriteRenderer srplayercheat;
+
 	public GameObject player;
+	public GameObject lacamera;
+	public GameObject playerCheat;
 
 	// Use this for initialization
 	void Start () {
 		sauvegardetest = player.GetComponent<SauvegardeTest> ();
 		menupausescript = player.GetComponent<MenuPause> ();
+		movecamerascript = lacamera.GetComponent <MoveCameraNEW> ();
+		rbplayer = player.GetComponent<Rigidbody2D> ();
+		srplayer = player.GetComponent<SpriteRenderer> ();
+		srplayercheat = playerCheat.GetComponent<SpriteRenderer> ();
+
+		srplayer.enabled = false;
 
 		StartCoroutine (StartDelay());
 
@@ -43,9 +56,11 @@ public class DelayedStart : MonoBehaviour {
 //		Time.timeScale = 1;
 
 		// Un autre test
+		movecamerascript.enabled = false;
 		sauvegardetest.enabled = false;
 		menupausescript.enabled = false;
-		Time.timeScale = 0;
+		rbplayer.isKinematic = true;
+		//Time.timeScale = 0;
 		countdown3.SetActive (true);
 		yield return new WaitForSecondsRealtime (1f);
 		countdown3.SetActive (false);
@@ -56,11 +71,15 @@ public class DelayedStart : MonoBehaviour {
 		yield return new WaitForSecondsRealtime (1f);
 		countdown1.SetActive (false);
 		countdownGo.SetActive (true);
+		srplayer.enabled = true;
+		srplayercheat.enabled = false;
 		yield return new WaitForSecondsRealtime (0.5f);
 		countdownGo.SetActive (false);
-		Time.timeScale = 1;
+		//Time.timeScale = 1;
 		sauvegardetest.enabled = true;
 		menupausescript.enabled = true;
+		rbplayer.isKinematic = false;
+		movecamerascript.enabled = true;
 	}
 
 }
