@@ -156,11 +156,13 @@ public class PowerUp : MonoBehaviour {
 		gofasterscript.newSpeed = 9;
 		movecameranewscript.speed = 6;
 		scriptplayer.maxSpeed = 10;
+		movecameranewscript.downSpeed = 0.5f;
 		player.layer = LayerMask.NameToLayer ("Fuckall");
 		yield return new WaitForSeconds (5f);
 		gofasterscript.newSpeed = 4.5f;
 		movecameranewscript.speed = 3;
 		scriptplayer.maxSpeed = 5;
+		movecameranewscript.downSpeed = 0.25f;
 		player.layer = LayerMask.NameToLayer ("Player");
 		print ("Un jour le powerup sera fini maintenant.");
 		PowerUp_InvicibilityUI.enabled = false;

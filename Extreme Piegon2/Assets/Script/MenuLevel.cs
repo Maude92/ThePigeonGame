@@ -19,6 +19,9 @@ public class MenuLevel : MonoBehaviour {
 	public GameObject pauseUI;
 	public GameObject mainUI;
 	public GameObject powerupUI;
+	public GameObject playerUI;
+	public GameObject psygeonUI;
+	public GameObject imagePsygeonUI;
 
 
 	void Start (){
@@ -49,6 +52,9 @@ public class MenuLevel : MonoBehaviour {
 		Time.timeScale = 1;
 		pauseUI.SetActive (false);
 		mainUI.SetActive (true);
+		playerUI.SetActive (true);
+		psygeonUI.SetActive (true);
+		imagePsygeonUI.SetActive (true);
 		powerupUI.SetActive (true);
 		playerscript.enabled = true;
 	}
