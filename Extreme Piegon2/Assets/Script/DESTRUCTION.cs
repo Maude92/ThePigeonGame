@@ -32,7 +32,7 @@ public class DESTRUCTION : MonoBehaviour {
 
 
 	IEnumerator ExplodingBird (){
-		yield return new WaitForSeconds (0.16f);
+		yield return new WaitForSeconds (0.24f);
 		destroyNow = true;
 	}
 }
