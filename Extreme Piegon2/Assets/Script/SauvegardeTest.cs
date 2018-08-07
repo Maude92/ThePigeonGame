@@ -18,6 +18,7 @@ public class SauvegardeTest : MonoBehaviour {
 	public int quelLevel;
 	//public int totaletoilew1l1;
 	public int highScoreEtoileW1L1;
+	public int highScoreEtoileW1L2;
 
 	public bool ayoye;
 
@@ -113,6 +114,8 @@ public class SauvegardeTest : MonoBehaviour {
 		//totaletoilew1l1 = ZPlayerPrefs.GetInt ("EtoileW1L1", 0);
 
 		highScoreEtoileW1L1 = ZPlayerPrefs.GetInt ("HSEtoileW1L1", 0);
+
+		highScoreEtoileW1L2 = ZPlayerPrefs.GetInt ("HSEtoileW1L2", 0);
 
 		nbVie = 3;
 
@@ -226,8 +229,33 @@ public class SauvegardeTest : MonoBehaviour {
 					deuxetoiles.SetActive (false);
 					troisetoiles.SetActive (true);
 				}
-			} else if (quelLevel == 2) {
+
+			} else if (quelLevel == 2) {				
+				if (nbEtoile > highScoreEtoileW1L2) {
+					highScoreEtoileW1L2 = nbEtoile;
+					ZPlayerPrefs.SetInt ("HSEtoileW1L2", nbEtoile);
+				} else if (nbEtoile <= highScoreEtoileW1L2) {
+					highScoreEtoileW1L2 = highScoreEtoileW1L2;
+					ZPlayerPrefs.SetInt ("HSEtoileW1L2", highScoreEtoileW1L2);
+				}
+
+				if (nbEtoile == 1) {
+					uneetoile.SetActive (true);
+					deuxetoiles.SetActive (false);
+					troisetoiles.SetActive (false);
+				} else if (nbEtoile == 2) {
+					uneetoile.SetActive (false);
+					deuxetoiles.SetActive (true);
+					troisetoiles.SetActive (false);
+				} else if (nbEtoile == 3) {
+					uneetoile.SetActive (false);
+					deuxetoiles.SetActive (false);
+					troisetoiles.SetActive (true);
+				}
+
+			} else if (quelLevel == 3) {
 				print ("Il se passe quelque chose d'autre");						// À REMPLIR UN JOUR QUAND ON AURA PLUS QUE 1 LEVEL
+
 			}
 		}
 
@@ -433,6 +461,7 @@ public class SauvegardeTest : MonoBehaviour {
 			anim.SetBool ("Fly", true);
 			rbpiegon.velocity = Vector2.zero;
 			rbpiegon.AddForce (new Vector2 (0, upForce));
+			//print ("Je pèse sur A");
 		}
 
 	// B button

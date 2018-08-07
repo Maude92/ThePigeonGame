@@ -42,6 +42,8 @@ public class PowerUp : MonoBehaviour {
 
 	public GameObject canvasRawrrr;
 	public GameObject particulesPowerup;
+	public GameObject particulesScream;
+	public GameObject particulesInvincible;
 
 
 	void Start (){
@@ -80,10 +82,12 @@ public class PowerUp : MonoBehaviour {
 
 		//Scream of Death
 		if (WichPowerUp == 1) {
+			particulesScream.transform.position = gameObject.transform.position;
+			particulesScream.SetActive (true);
 			//Désactiver le PowerUp du World et activer le PowerUp dans la box
 			//PowerUp_SoDWorld.SetActive (false); //faire disparaitre le powerup dans le monde
-			//StartCoroutine (WaitBeforeByeBye());														// POUR JUICE
-			spriterendererpowerup.enabled = false;
+			StartCoroutine (WaitBeforeByeBye());														// POUR JUICE
+			//spriterendererpowerup.enabled = false;
 			collider2dpowerup.enabled = false;
 			PowerUp_SoDUI.enabled = true; //mettre powerup dans la box
 			animpowerupcanvas.SetBool ("Powerup", true);
@@ -94,6 +98,8 @@ public class PowerUp : MonoBehaviour {
 
 		//Invincibility
 		if (WichPowerUp == 2) {
+			particulesInvincible.transform.position = gameObject.transform.position;
+			particulesInvincible.SetActive (true);
 			//PowerUp_InvincibilityWorld.SetActive (false);
 			StartCoroutine (WaitBeforeByeBye());
 			//spriterendererpowerup.enabled = false;
@@ -150,18 +156,20 @@ public class PowerUp : MonoBehaviour {
 		gofasterscript.newSpeed = 9;
 		movecameranewscript.speed = 6;
 		scriptplayer.maxSpeed = 10;
+		movecameranewscript.downSpeed = 0.5f;
 		player.layer = LayerMask.NameToLayer ("Fuckall");
 		yield return new WaitForSeconds (5f);
 		gofasterscript.newSpeed = 4.5f;
 		movecameranewscript.speed = 3;
 		scriptplayer.maxSpeed = 5;
+		movecameranewscript.downSpeed = 0.25f;
 		player.layer = LayerMask.NameToLayer ("Player");
 		print ("Un jour le powerup sera fini maintenant.");
 		PowerUp_InvicibilityUI.enabled = false;
 	}
 
 	IEnumerator WaitBeforeByeBye(){
-		yield return new WaitForSeconds (1);
+		yield return new WaitForSeconds (2);
 		spriterendererpowerup.enabled = false;
 	}
 }

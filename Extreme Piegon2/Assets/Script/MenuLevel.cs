@@ -19,6 +19,9 @@ public class MenuLevel : MonoBehaviour {
 	public GameObject pauseUI;
 	public GameObject mainUI;
 	public GameObject powerupUI;
+	public GameObject playerUI;
+	public GameObject psygeonUI;
+	public GameObject imagePsygeonUI;
 
 
 	void Start (){
@@ -28,6 +31,10 @@ public class MenuLevel : MonoBehaviour {
 
 		
 	public void TryAgain (){
+		if (lemenupause.modePause == true) {
+			lemenupause.modePause = false;
+		}
+		Time.timeScale = 1;
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 
@@ -45,6 +52,9 @@ public class MenuLevel : MonoBehaviour {
 		Time.timeScale = 1;
 		pauseUI.SetActive (false);
 		mainUI.SetActive (true);
+		playerUI.SetActive (true);
+		psygeonUI.SetActive (true);
+		imagePsygeonUI.SetActive (true);
 		powerupUI.SetActive (true);
 		playerscript.enabled = true;
 	}
@@ -61,6 +71,11 @@ public class MenuLevel : MonoBehaviour {
 	// VERSION SI ON VEUT AJOUTER LE LOADING SCREEN
 
 	public void TryAgainLoad(){
+		if (lemenupause.modePause == true) {
+			lemenupause.modePause = false;
+		}
+		Time.timeScale = 1;
+
 	// POUR AFFICHER LES RANDOM FACTS.... DE MANIÈRE RANDOM
 		int indexRandomFact = Random.Range (0, randomFact.Length);
 		randomFactText.text = randomFact [indexRandomFact].text;
