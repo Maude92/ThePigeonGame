@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/World War Piegeon Scenes/MenuPrincipal.unity
     guid: 91e74344bc0ee4f408e59185e2aa37b3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/World1-Level1.unity
     guid: 2312e725f8ed4494180699fd53755a6a
   - enabled: 0
@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene/World War Piegeon Scenes/MenuFin.unity
     guid: a934fedde158d4fc9bd3d158eaab58b4
+  - enabled: 1
+    path: Assets/Scene/FelixUITesting_World1-Level2.unity
+    guid: c532a2af767244d2884ab630b18f6d0f
