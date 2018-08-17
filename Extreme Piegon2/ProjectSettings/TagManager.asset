@@ -15,6 +15,7 @@ TagManager:
   - OnScreen
   - Fuckall
   - Boulder
+  - Plancher
   layers:
   - Default
   - TransparentFX

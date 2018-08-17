@@ -26,6 +26,7 @@ public class DropTheBall : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "Player") {
 			rbNormal.isKinematic = false;
+			gameObject.SetActive (false);
 		}
 	}
 }

@@ -111,7 +111,7 @@ public class PowerUp : MonoBehaviour {
 	}
 
 	public void ActivatePowerUp(){
-		if (WichPowerUp == 1) {
+		if (WichPowerUp == 1) {										// SCREAM OF DEATH
 			//PowerUp_SoDUI.enabled = false;
 			StartCoroutine (KillEverybodyNow ());
 //			killeverybody = true;
@@ -124,17 +124,18 @@ public class PowerUp : MonoBehaviour {
 //			}
 		}
 
-		if (WichPowerUp == 2) {
+		if (WichPowerUp == 2) {										// INVINCIBLE
 			//PowerUp_InvicibilityUI.enabled = false;
 			StartCoroutine (ImInvincible ());
 			//print ("Un jours il y aura qqchose ici");
 			//dommage = 0 pendant x secondes
 		}
 	}
-
-	IEnumerator KillEverybodyNow () {
+		
+	IEnumerator KillEverybodyNow () {												
 		animpowerupcanvas.SetBool ("PowerupUsed", true);
 		animMiniBeakyUI.SetBool ("Scream", true);
+		//Time.timeScale = 0.75f;														// À RAJOUTER SI ON VEUT QUE LE TEMPS RALENTISSE PENDANT QU'ON UTILISE LE POWERUP
 		canvasRawrrr.SetActive (true);
 		player.layer = LayerMask.NameToLayer ("Fuckall");
 		killeverybody = true;
@@ -142,6 +143,7 @@ public class PowerUp : MonoBehaviour {
 		killeverybody = false;
 		//TrigDestruction.SetActive (false);
 		yield return new WaitForSeconds (0.5f);
+		//Time.timeScale = 1;															// SAME
 		player.layer = LayerMask.NameToLayer ("Player");
 		yield return new WaitForSeconds (1.5f);
 		canvasRawrrr.SetActive (false);
