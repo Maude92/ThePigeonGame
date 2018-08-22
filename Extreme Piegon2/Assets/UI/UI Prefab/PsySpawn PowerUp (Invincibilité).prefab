@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61953535328624858}
   - component: {fileID: 114578415015169340}
   m_Layer: 0
-  m_Name: "PsySpawn PowerUp (Invincibilit\xE9)"
+  m_Name: "PsySpawn PowerUp (Invincibilite\u0301)"
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
