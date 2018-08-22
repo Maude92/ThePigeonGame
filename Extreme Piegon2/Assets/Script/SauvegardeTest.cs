@@ -518,7 +518,7 @@ public class SauvegardeTest : MonoBehaviour {
 
 	// LES TRIGGERS
 		//Triggers
-		if ((Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptpremier.BeakyGotAPowerUp == true) || Input.GetKeyDown (KeyCode.Space)) {
+		if (((Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) || Input.GetKeyDown (KeyCode.Space)) && powerupscriptpremier.BeakyGotAPowerUp == true) {
 			powerupscriptpremier.BeakyGotAPowerUp = false;
 			powerupscriptpremier.ActivatePowerUp ();
 			print ("J'utilise le powerup #2!");
@@ -544,7 +544,7 @@ public class SauvegardeTest : MonoBehaviour {
 //		} else if (Input.GetAxis ("360_TriggerL") < 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) {
 //			print ("Je pèse juste sur le trigger droit");
 		
-		} else if (Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001 && powerupscriptdeuxieme.BeakyGotAPowerUp == true && powerupscriptpremier.BeakyGotAPowerUp == false) {
+		} else if (((Input.GetAxis ("360_TriggerL") > 0.001 && Input.GetAxis ("360_TriggerR") > 0.001) || Input.GetKeyDown (KeyCode.Space)) && powerupscriptdeuxieme.BeakyGotAPowerUp == true && powerupscriptpremier.BeakyGotAPowerUp == false) {
 			powerupscriptdeuxieme.BeakyGotAPowerUp = false;
 			powerupscriptdeuxieme.ActivatePowerUp ();
 			print ("J'utilise le powerup #1!");
