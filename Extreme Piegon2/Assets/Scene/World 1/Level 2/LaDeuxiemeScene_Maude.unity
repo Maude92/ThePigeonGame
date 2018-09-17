@@ -49546,8 +49546,13 @@ MonoBehaviour:
   choixYesX: 0
   choixNoB: 0
   choixFait: 0
+  itGetsBetter: 0
+  itGetsWorse: 0
+  outcome: 0
   CeTrigger: {fileID: 1416093118}
   PsyCanvas: {fileID: 635104218}
+  boulderNormal: {fileID: 1763206842}
+  boulderParent: {fileID: 1775020037}
   TexteDuPsy: {fileID: 70578621}
   BoutonX: {fileID: 1613532003}
   BoutonB: {fileID: 924293935}
